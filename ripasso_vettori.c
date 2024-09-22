@@ -3,8 +3,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <bool.h>
-#define DIM 50
-
 
 
 void menu ()
@@ -24,10 +22,15 @@ void menu ()
 
 int main()
 {
-    int scelta;
+    int scelta, dim=0;
     bool esci = false;
-    int numeri[DIM];
-    
+    srand(time(NULL)); 
+    printf("Inserisci la dimensione dell'array\n");
+    scanf("%d", &dim);
+    int numeri[dim];
+    for (int i = 0; i < size; i++) {
+        numeri[i] = rand() % 100;  // Random numbers between 0 and 99
+    }
     do{
         menu();printf("Inserisci la scelta:\n");
         scanf("%d", &scelta);
