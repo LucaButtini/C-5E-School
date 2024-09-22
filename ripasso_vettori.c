@@ -23,6 +23,20 @@ void media_somma(int numeri[], int dim) {
   printf("MEDIA --> [%.2f], SOMMA --> [%d]\n", media, somma);
 }
 
+void pari(int numeri[], int dim) {
+  for (int i = 0; i < dim; i++) {
+    if (numeri[i] % 2 == 0) {
+      printf("PARI --> %d\n", numeri[i]);
+    }
+  }
+}
+void dispari(int numeri[], int dim) {
+  for (int i = 0; i < dim; i++) {
+    if (numeri[i] % 2 != 0) {
+      printf("DIPARI --> %d\n", numeri[i]);
+    }
+  }
+}
 void menu() {
   printf("\n1 -> Stampa\n");
   printf("2 -> Stampa Invertito\n");
@@ -62,10 +76,10 @@ int main() {
       media_somma(numeri, dim);
       break;
     case 4:
-
+      pari(numeri, dim);
       break;
     case 5:
-
+      dispari(numeri, dim);
       break;
     case 6: {
       int val;
