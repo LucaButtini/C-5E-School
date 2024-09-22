@@ -13,6 +13,15 @@ void stampa_contrario(int numeri[], int dim) {
     printf("[%d] --> %d\n", i, numeri[i]);
   }
 }
+void media_somma(int numeri[], int dim) {
+  int somma = 0;
+  float media = 0;
+  for (int i = 0; i < dim; i++) {
+    somma += numeri[i];
+  }
+  media = (float)somma / dim;
+  printf("MEDIA --> [%.2f], SOMMA --> [%d]\n", media, somma);
+}
 
 void menu() {
   printf("\n1 -> Stampa\n");
@@ -50,7 +59,7 @@ int main() {
       stampa_contrario(numeri, dim);
       break;
     case 3:
-
+      media_somma(numeri, dim);
       break;
     case 4:
 
@@ -71,7 +80,6 @@ int main() {
       break;
     }
     case 8:
-
       break;
     case 9:
 
