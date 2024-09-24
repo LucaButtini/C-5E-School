@@ -62,6 +62,16 @@ int elimina(int numeri[], int dim, int num) {
   return trovato;
 }
 
+void alterna_coppie(int numeri[], int dim) {
+  int scambio;
+  for (int i = 0; i < dim - 1; i += 2) {
+    scambio = numeri[i];
+    numeri[i] = numeri[i + 1];
+    numeri[i + 1] = scambio;
+  }
+  printf("Coppie alternate\n");
+}
+
 void menu() {
   printf("\n1 -> Stampa\n");
   printf("2 -> Stampa Invertito\n");
@@ -131,7 +141,7 @@ int main() {
       break;
     }
     case 8:
-
+      alterna_coppie(numeri, dim);
       break;
     case 9:
 
