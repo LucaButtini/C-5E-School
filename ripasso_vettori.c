@@ -1,4 +1,3 @@
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -42,18 +41,25 @@ void dispari(int numeri[], int dim) {
   }
 }
 
-void ricerca(int numeri[], int dim, int num) {
-  bool trovato = false;
+int ricerca(int numeri[], int dim, int num) {
   for (int i = 0; i < dim; i++) {
     if (numeri[i] == num) {
-      printf("[%d] POSIZIONE --> %d\n", num, i);
-      trovato = true;
-      break;
+      return i;
     }
   }
-  if (!trovato) {
-    printf("Numero non trovato\n");
+  return -1;
+}
+
+int elimina(int numeri[], int dim, int num) {
+  int trovato;
+  trovato = ricerca(numeri, dim, num);
+  if (trovato != -1) {
+    for (int i = trovato; i < dim - 1; i++) {
+      numeri[i] = numeri[i + 1];
+    }
+    numeri[dim - 1] = -1;
   }
+  return trovato;
 }
 
 void menu() {
@@ -71,7 +77,7 @@ void menu() {
 
 int main() {
   int scelta, dim = 0;
-  bool esci = false;
+  int esci = 0;
   srand(time(NULL));
   printf("Inserisci la dimensione dell'array\n");
   scanf("%d", &dim);
@@ -82,7 +88,7 @@ int main() {
 
   do {
     menu();
-    printf("Inserisci la scelta:\n");
+    printf("Inserisci la scelta: ");
     scanf("%d", &scelta);
     switch (scelta) {
     case 1:
@@ -101,16 +107,27 @@ int main() {
       dispari(numeri, dim);
       break;
     case 6: {
-      int num;
+      int num, pos;
       printf("Inserisci il numero da cercare: ");
       scanf("%d", &num);
-      ricerca(numeri, dim, num);
+      pos = ricerca(numeri, dim, num);
+      if (pos != -1) {
+        printf("POSIZIONE --> %d\n", pos);
+      } else {
+        printf("Numero non trovato\n");
+      }
       break;
     }
     case 7: {
-      int val;
+      int num, eliminato;
       printf("Inserisci il numero da eliminare: ");
-      scanf("%d", &val);
+      scanf("%d", &num);
+      eliminato = elimina(numeri, dim, num);
+      if (eliminato != -1) {
+        dim--;
+      } else {
+        printf("Numero non trovato\n");
+      }
       break;
     }
     case 8:
@@ -120,7 +137,7 @@ int main() {
 
       break;
     case 10:
-      esci = true;
+      esci = 1;
       break;
     default:
       printf("Scelta errata.\n");
