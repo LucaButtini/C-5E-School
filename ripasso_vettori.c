@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,11 +9,13 @@ void stampa(int numeri[], int dim) {
     printf("[%d] --> %d\n", i, numeri[i]);
   }
 }
+
 void stampa_contrario(int numeri[], int dim) {
   for (int i = dim - 1; i > 0; i--) {
     printf("[%d] --> %d\n", i, numeri[i]);
   }
 }
+
 void media_somma(int numeri[], int dim) {
   int somma = 0;
   float media = 0;
@@ -30,6 +33,7 @@ void pari(int numeri[], int dim) {
     }
   }
 }
+
 void dispari(int numeri[], int dim) {
   for (int i = 0; i < dim; i++) {
     if (numeri[i] % 2 != 0) {
@@ -37,6 +41,21 @@ void dispari(int numeri[], int dim) {
     }
   }
 }
+
+void ricerca(int numeri[], int dim, int num) {
+  bool trovato = false;
+  for (int i = 0; i < dim; i++) {
+    if (numeri[i] == num) {
+      printf("[%d] POSIZIONE --> %d\n", num, i);
+      trovato = true;
+      break;
+    }
+  }
+  if (!trovato) {
+    printf("Numero non trovato\n");
+  }
+}
+
 void menu() {
   printf("\n1 -> Stampa\n");
   printf("2 -> Stampa Invertito\n");
@@ -52,7 +71,7 @@ void menu() {
 
 int main() {
   int scelta, dim = 0;
-  int esci = 0;
+  bool esci = false;
   srand(time(NULL));
   printf("Inserisci la dimensione dell'array\n");
   scanf("%d", &dim);
@@ -82,9 +101,10 @@ int main() {
       dispari(numeri, dim);
       break;
     case 6: {
-      int val;
+      int num;
       printf("Inserisci il numero da cercare: ");
-      scanf("%d", &val);
+      scanf("%d", &num);
+      ricerca(numeri, dim, num);
       break;
     }
     case 7: {
@@ -94,12 +114,13 @@ int main() {
       break;
     }
     case 8:
+
       break;
     case 9:
 
       break;
     case 10:
-      esci = 1;
+      esci = true;
       break;
     default:
       printf("Scelta errata.\n");
