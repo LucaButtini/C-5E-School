@@ -72,6 +72,19 @@ void alterna_coppie(int numeri[], int dim) {
   printf("Coppie alternate\n");
 }
 
+void bubble_sort(int numeri[], int dim) {
+  int temp;
+  for (int i = 0; i < dim - 1; i++) {
+    for (int j = 0; j < dim - 1 - i; j++) {
+      if (numeri[j] > numeri[j + 1]) {
+        temp = numeri[j];
+        numeri[j] = numeri[j + 1];
+        numeri[j + 1] = temp;
+      }
+    }
+  }
+  printf("Array ordinato\n");
+}
 void menu() {
   printf("\n1 -> Stampa\n");
   printf("2 -> Stampa Invertito\n");
@@ -144,7 +157,7 @@ int main() {
       alterna_coppie(numeri, dim);
       break;
     case 9:
-
+      bubble_sort(numeri, dim);
       break;
     case 10:
       esci = 1;
