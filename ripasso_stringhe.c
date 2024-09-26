@@ -1,18 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <ctype.h>
 #define DIM 1024
 
 int contiene_lettere(char stringa[]){
-    int check_lettera = 1; 
+    int check = 1;
     for(int i=0; i<strlen(stringa); i++){
-        if(!isalpha(stringa[i])){ //utilizzata con la lib ctype.h controlla se una stringa contiene solo lettere
-            check_lettera = 0;
-            break;
-        }
+       if(!(stringa[i]>= 'A' && stringa[i] <= 'Z' || stringa[i]>= 'a' && stringa[i] <= 'z')){
+           check = 0;
+           break;
+       }
     }
-    return check_lettera;
+    return check;
 }
 
 int main()
