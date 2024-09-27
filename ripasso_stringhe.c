@@ -24,7 +24,7 @@ int conta_lettere(char stringa[], char car) { // punto 2
   return conta;
 }
 
-int contiene_doppie(char stringa[]) {
+int contiene_doppie(char stringa[]) { // punto 4
   for (int i = 0; i < strlen(stringa) - 1; i++) {
     if (stringa[i] == stringa[i + 1]) {
       return 1;
@@ -33,8 +33,18 @@ int contiene_doppie(char stringa[]) {
   return 0;
 }
 
+int confronta(char stringa1[], char stringa2[]) { //punto 1.1
+  if (strlen(stringa1) == strlen(stringa2)) {
+    return -1;
+  } else if (strlen(stringa1) < strlen(stringa2)) {
+    return 0;
+  } else {
+    return 1;
+  }
+}
+
 int main() {
-  char stringa1[DIM];
+  char stringa1[DIM], stringa2[DIM];
   char car;
   int conta;
   printf("Inserisci una stringa a piacere: ");
@@ -52,6 +62,15 @@ int main() {
     printf("\nLa stringa contiene doppie\n");
   } else {
     printf("\nLa stringa non contiene doppie\n");
+  }
+  printf("\n\nInserisci una seconda stringa a piacere: ");
+  scanf("%s", stringa2);
+  if (confronta(stringa1, stringa2) == -1) {
+    printf("Le stringhe hanno la stessa lunghezza\n");
+  } else if (confronta(stringa1, stringa2) == 0) {
+    printf("La stringa 2 è la più lunga\n");
+  } else {
+    printf("La stringa 1 è la più lunga\n");
   }
   return 0;
 }
