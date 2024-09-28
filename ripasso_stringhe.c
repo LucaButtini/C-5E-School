@@ -33,7 +33,7 @@ int contiene_doppie(char stringa[]) { // punto 4
   return 0;
 }
 
-int confronta(char stringa1[], char stringa2[]) { //punto 1.1
+int confronta(char stringa1[], char stringa2[]) { // punto 1.1
   if (strlen(stringa1) == strlen(stringa2)) {
     return -1;
   } else if (strlen(stringa1) < strlen(stringa2)) {
@@ -41,6 +41,21 @@ int confronta(char stringa1[], char stringa2[]) { //punto 1.1
   } else {
     return 1;
   }
+}
+
+int verifica_lettera(char stringa[]) {
+  return (stringa[i] == 'a' || stringa[i] == 'e' || stringa[i] == 'i' ||
+          stringa[i] == 'o' || stringa[i] == 'u');
+}
+
+int conta_vocali(char stringa[]) {
+  int conta;
+  for (int i = 0; i < strlen(stringa); i++) {
+    if (verifica_lettera) {
+      conta++;
+    }
+  }
+  return conta;
 }
 
 int main() {
