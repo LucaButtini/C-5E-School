@@ -43,15 +43,28 @@ int confronta(char stringa1[], char stringa2[]) { // punto 1.1
   }
 }
 
-int verifica_lettera(char stringa[]) {
-  return (stringa[i] == 'a' || stringa[i] == 'e' || stringa[i] == 'i' ||
-          stringa[i] == 'o' || stringa[i] == 'u');
+int verifica_lettera(char lettera) {
+  return (lettera == 'a' || lettera == 'e' || lettera == 'i' ||
+          lettera == 'o' || lettera == 'u' || lettera == 'A' ||
+          lettera == 'E' || lettera == 'I' || lettera == 'O' || lettera == 'U');
 }
 
-int conta_vocali(char stringa[]) {
-  int conta;
+int conta_vocali(char stringa[]) { //1.2
+  int conta = 0;
   for (int i = 0; i < strlen(stringa); i++) {
-    if (verifica_lettera) {
+    if (verifica_lettera(stringa[i])) {
+      conta++;
+    }
+  }
+  return conta;
+}
+
+int conta_consonanti(char stringa[]) { //1.4
+  int conta = 0;
+  for (int i = 0; i < strlen(stringa); i++) {
+    if ((stringa[i] >= 'A' && stringa[i] <= 'Z' ||
+         stringa[i] >= 'a' && stringa[i] <= 'z') &&
+        !verifica_lettera(stringa[i])) {
       conta++;
     }
   }
@@ -61,7 +74,7 @@ int conta_vocali(char stringa[]) {
 int main() {
   char stringa1[DIM], stringa2[DIM];
   char car;
-  int conta;
+  int conta, vocali1, consonanti1, vocali2, consonanti2;
   printf("Inserisci una stringa a piacere: ");
   scanf("%s", stringa1);
   if (contiene_lettere(stringa1) == 1) {
@@ -86,6 +99,24 @@ int main() {
     printf("La stringa 2 è la più lunga\n");
   } else {
     printf("La stringa 1 è la più lunga\n");
+  }
+  vocali1 = conta_vocali(stringa1);
+  vocali2 = conta_vocali(stringa2);
+  consonanti1 = conta_consonanti(stringa1);
+  consonanti2 = conta_consonanti(stringa2);
+  if (vocali1 > vocali2) {
+    printf("\nLa stringa 1 ha più vocali\n");
+  } else if (vocali1 < vocali2) {
+    printf("\nLa stringa 2 ha più vocali\n");
+  } else {
+    printf("\nLe stringhe hanno lo stesso numero di vocali\n");
+  }
+  if (consonanti1 > consonanti2) {
+    printf("\nLa stringa 1 ha più consonanti\n");
+  } else if (consonanti1 < consonanti2) {
+    printf("\nLa stringa 2 ha più consonanti\n");
+  } else {
+    printf("\nLe stringhe hanno lo stesso numero di consonanti\n");
   }
   return 0;
 }
