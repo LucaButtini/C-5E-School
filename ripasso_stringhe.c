@@ -24,6 +24,19 @@ int conta_lettere(char stringa[], char car) { // punto 2
   return conta;
 }
 
+void crea_stringhe(char stringa[], char s_pari[], char s_dispari[]) { // punto 3
+  int pari = 0, dispari = 0;
+  for (int i = 0; i < strlen(stringa); i++) {
+    if (i % 2 == 0) {
+      s_pari[pari++] = stringa[i];
+    } else {
+      s_dispari[dispari++] = stringa[i];
+    }
+  }
+  s_pari[pari] = '\0';
+  s_dispari[dispari] = '\0';
+}
+
 int contiene_doppie(char stringa[]) { // punto 4
   for (int i = 0; i < strlen(stringa) - 1; i++) {
     if (stringa[i] == stringa[i + 1]) {
@@ -49,7 +62,7 @@ int verifica_lettera(char lettera) {
           lettera == 'E' || lettera == 'I' || lettera == 'O' || lettera == 'U');
 }
 
-int conta_vocali(char stringa[]) { //1.2
+int conta_vocali(char stringa[]) { // 1.3
   int conta = 0;
   for (int i = 0; i < strlen(stringa); i++) {
     if (verifica_lettera(stringa[i])) {
@@ -59,7 +72,7 @@ int conta_vocali(char stringa[]) { //1.2
   return conta;
 }
 
-int conta_consonanti(char stringa[]) { //1.4
+int conta_consonanti(char stringa[]) { // 1.4
   int conta = 0;
   for (int i = 0; i < strlen(stringa); i++) {
     if ((stringa[i] >= 'A' && stringa[i] <= 'Z' ||
@@ -72,7 +85,7 @@ int conta_consonanti(char stringa[]) { //1.4
 }
 
 int main() {
-  char stringa1[DIM], stringa2[DIM];
+  char stringa1[DIM], stringa2[DIM], s_pari[DIM], s_dispari[DIM];
   char car;
   int conta, vocali1, consonanti1, vocali2, consonanti2;
   printf("Inserisci una stringa a piacere: ");
@@ -86,6 +99,9 @@ int main() {
   scanf(" %c", &car);
   conta = conta_lettere(stringa1, car);
   printf("\nLa lettera è presente %d volte\n", conta);
+  crea_stringhe(stringa1, s_pari, s_dispari);
+  printf("\nStringa con i caratteri pari: %s\n", s_pari);
+  printf("Stringa con i caratteri dispari: %s\n", s_dispari);
   if (contiene_doppie(stringa1) == 1) {
     printf("\nLa stringa contiene doppie\n");
   } else {
