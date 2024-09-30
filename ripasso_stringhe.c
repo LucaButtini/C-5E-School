@@ -62,6 +62,30 @@ int verifica_lettera(char lettera) {
           lettera == 'E' || lettera == 'I' || lettera == 'O' || lettera == 'U');
 }
 
+void lettere_comuni(char stringa1[], char stringa2[], char comuni[]) {
+  int index = 0;
+  int trovato; 
+  for (int i = 0; i < strlen(stringa1); i++) {
+    trovato = 0; 
+    for (int k = 0; k < index; k++) {
+      if (comuni[k] == stringa1[i]) {
+        trovato = 1; 
+        break;
+      }
+    }
+    if (!trovato) {
+      for (int j = 0; j < strlen(stringa2); j++) {
+        if (stringa1[i] == stringa2[j]) {
+          comuni[index++] = stringa1[i]; 
+          break;                         
+        }
+      }
+    }
+  }
+
+  comuni[index] = '\0'; 
+}
+
 int conta_vocali(char stringa[]) { // 1.3
   int conta = 0;
   for (int i = 0; i < strlen(stringa); i++) {
@@ -85,7 +109,7 @@ int conta_consonanti(char stringa[]) { // 1.4
 }
 
 int main() {
-  char stringa1[DIM], stringa2[DIM], s_pari[DIM], s_dispari[DIM];
+  char stringa1[DIM], stringa2[DIM], s_pari[DIM], s_dispari[DIM], comuni[DIM];
   char car;
   int conta, vocali1, consonanti1, vocali2, consonanti2;
   printf("Inserisci una stringa a piacere: ");
@@ -110,12 +134,14 @@ int main() {
   printf("\n\nInserisci una seconda stringa a piacere: ");
   scanf("%s", stringa2);
   if (confronta(stringa1, stringa2) == -1) {
-    printf("Le stringhe hanno la stessa lunghezza\n");
+    printf("\nLe stringhe hanno la stessa lunghezza\n");
   } else if (confronta(stringa1, stringa2) == 0) {
-    printf("La stringa 2 è la più lunga\n");
+    printf("\nLa stringa 2 è la più lunga\n");
   } else {
-    printf("La stringa 1 è la più lunga\n");
+    printf("\nLa stringa 1 è la più lunga\n");
   }
+  lettere_comuni(stringa1, stringa2, comuni);
+  printf("\nLe lettere comuni sono: %s", comuni);
   vocali1 = conta_vocali(stringa1);
   vocali2 = conta_vocali(stringa2);
   consonanti1 = conta_consonanti(stringa1);
