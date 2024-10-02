@@ -1,3 +1,4 @@
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,11 +8,28 @@ typedef struct {
   char modello_auto[100];
   char marca[100];
   int cilindrata;
-  double prezzo;
+  int prezzo;
   int anno_immatricolazione;
 } Auto;
 
-int ricerca_prezzo(Auto conc[], double ricerca) {
+void stampa_prezzi(Auto conc[]) {
+  int max = 0, min = INT_MAX, pos_min, pos_max;
+  for (int i = 0; i < DIM; i++) {
+    if (conc[i].prezzo > max) {
+      max = conc[i].prezzo;
+      pos_max = i;
+    } else if (conc[i].prezzo < min) {
+      min = conc[i].prezzo;
+      pos_min = i;
+    }
+  }
+  printf("\nPrezzo più alto: %d, modello: %s\n", conc[pos_max].prezzo,
+         conc[pos_max].modello_auto);
+  printf("\nPrezzo più basso: %d, modello: %s\n", conc[pos_min].prezzo,
+         conc[pos_min].modello_auto);
+}
+
+int ricerca_prezzo(Auto conc[], int ricerca) {
   for (int i = 0; i < DIM; i++) {
     if (ricerca == conc[i].prezzo) {
       return i;
@@ -36,7 +54,7 @@ void ordina_auto(Auto conc[]) {
 
 void stampa(Auto conc[]) {
   for (int i = 0; i < DIM; i++) {
-    printf("Modello: [%s], Marca: [%s], Cilindrata: [%d], Prezzo: [%.2f], Anno "
+    printf("Modello: [%s], Marca: [%s], Cilindrata: [%d], Prezzo: [%d], Anno "
            "Immatricolazione: [%d]\n",
            conc[i].modello_auto, conc[i].marca, conc[i].cilindrata,
            conc[i].prezzo, conc[i].anno_immatricolazione);
@@ -46,18 +64,19 @@ void stampa(Auto conc[]) {
 int main(int argc, char *argv[]) {
   char modello[100], marca[100];
   int posizione;
-  double ricercato;
-  Auto a1 = {"modello 1", "marca 1", 80, 600.54, 2009};
-  Auto a2 = {"modello 2", "marca 2", 50, 300.34, 2013};
-  Auto a3 = {"modello 3", "marca 3", 100, 800.53, 1996};
+  int ricercato;
+  Auto a1 = {"modello 1", "marca 1", 80, 60, 2009};
+  Auto a2 = {"modello 2", "marca 2", 50, 300, 2013};
+  Auto a3 = {"modello 3", "marca 3", 100, 800, 1996};
   Auto concessionaria[DIM] = {a1, a2, a3};
   ordina_auto(concessionaria);
   stampa(concessionaria);
+  stampa_prezzi(concessionaria);
   printf("\nInserisci il prezzo della macchina da ricercare\n");
-  scanf("%lf", &ricercato);
+  scanf("%d", &ricercato);
   posizione = ricerca_prezzo(concessionaria, ricercato);
   if (posizione != -1) {
-    printf("\nPrezzo [%.2f], Modello [%s]\n", ricercato,
+    printf("\nPrezzo [%d], Modello [%s]\n", ricercato,
            concessionaria[posizione].modello_auto);
   } else {
     printf("\nMacchina non presente nella concessionaria\n");
