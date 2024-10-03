@@ -27,11 +27,19 @@ typedef enum {
     EXISTENTIALIST,
     PLAY,
     SCIENCE_FICTION,
-    CATEGORY_COUNT // Total number of categories
+    CATEGORY_COUNT 
 } Categoria;
+
+Libro libreria[DIM];
+
+void leggi_file()
+{
+
+}
+
 int main(int argc, char *argv[])
 {
     
-    Libro libreria[DIM];
+
     return 0;
 }
