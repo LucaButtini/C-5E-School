@@ -3,8 +3,8 @@
 #include <string.h>
 
 #define DIM_STR 100
-#define DIM 38 // Dimensione della libreria (numero massimo di libri)
 #define BUFFER_DIM 1024
+#define DIM 38 // Dimensione della libreria come numero massimo di libri dal file CSV
 
 typedef struct
 {
@@ -15,15 +15,47 @@ typedef struct
     char genre[DIM_STR];
 } Libro;
 
-Libro libreria[DIM];
+typedef struct
+{
+    char nome[DIM_STR];
+    Libro *libri;
+    int num_libri;
+} Categoria;
 
-// Funzione per leggere il file CSV e popolare la libreria
+// Array di puntatori a categorie
+Categoria *categorie[DIM];
+int num_categorie = 0;
+
+Categoria *crea_categoria(char nome[])
+{
+    for (int i = 0; i < num_categorie; i++)
+    {
+        if (strcmp(categorie[i]->nome, nome) == 0)
+        {
+            return categorie[i];
+        }
+    }
+    Categoria *categoria = malloc(sizeof(Categoria));
+    strcpy(categoria->nome, nome);
+    categoria->libri = malloc(sizeof(Libro) * DIM);
+    categoria->num_libri = 0;
+    categorie[num_categorie++] = categoria;
+    return categoria;
+}
+
+// Funzione per aggiungere un libro alla categoria specifica
+void libro_categoria(Libro libro)
+{
+    Categoria *categoria = crea_categoria(libro.genre);
+    categoria->libri[categoria->num_libri++] = libro;
+}
+
+// Funzione per leggere il file CSV e popolare le categorie
 void leggi_file()
 {
     char buffer[BUFFER_DIM];
     int riga = 0;
     FILE *file = fopen("libreria_libri.csv", "r");
-    Libro libro;
 
     if (file == NULL)
     {
@@ -34,15 +66,13 @@ void leggi_file()
     while (fgets(buffer, BUFFER_DIM, file))
     {
         if (riga == 0)
-        {
+        { // Salta la riga di intestazione
             riga++;
             continue;
         }
 
+        Libro libro;
         char *value = strtok(buffer, ",");
-        if (value == NULL)
-            break;
-
         strcpy(libro.title, value);
 
         value = strtok(NULL, ",");
@@ -57,32 +87,46 @@ void leggi_file()
         value = strtok(NULL, ",\n");
         strcpy(libro.genre, value);
 
-        // Inserisce il libro nella libreria
-        libreria[riga - 1] = libro;
+        libro_categoria(libro);
         riga++;
-        if (riga - 1 >= DIM)
-            break;
     }
     fclose(file);
 }
 
-// Funzione per stampare tutti i libri della libreria
-void stampa_libreria()
+// Funzione per stampare tutti i libri suddivisi per categoria
+void stampa_categorie()
 {
-    for (int i = 0; i < DIM; i++)
+    for (int i = 0; i < num_categorie; i++)
     {
-        printf("Title: %s\n", libreria[i].title);
-        printf("Author: %s\n", libreria[i].author);
-        printf("Year: %d\n", libreria[i].year);
-        printf("Price: %.2f\n", libreria[i].price);
-        printf("Genre: %s\n", libreria[i].genre);
+        Categoria *categoria = categorie[i];
         printf("-----------------------------------------------\n");
+        printf("Categoria: %s\n", categoria->nome);
+        printf("Numero di libri: %d\n\n", categoria->num_libri);
+        for (int j = 0; j < categoria->num_libri; j++)
+        {
+            Libro libro = categoria->libri[j];
+            printf("Title: %s\n", libro.title);
+            printf("Author: %s\n", libro.author);
+            printf("Year: %d\n", libro.year);
+            printf("Price: %.2f\n\n", libro.price);
+        }
     }
 }
 
-int main(int argc, char *argv[])
+// Funzione per liberare la memoria allocata
+void libera_memoria()
+{
+    for (int i = 0; i < num_categorie; i++)
+    {
+        free(categorie[i]->libri);
+        free(categorie[i]);
+    }
+}
+
+int main()
 {
     leggi_file();
-    stampa_libreria();
+    stampa_categorie();
+    libera_memoria();
     return 0;
 }
