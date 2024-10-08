@@ -1,69 +1,88 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define DIM 38 // dimensione libreria
+
+#define DIM_STR 100
+#define DIM 38 // Dimensione della libreria (numero massimo di libri)
 #define BUFFER_DIM 1024
 
-typedef struct {
-    char title[TITLE_SIZE];
-    char author[AUTHOR_SIZE];
+typedef struct
+{
+    char title[DIM_STR];
+    char author[DIM_STR];
     int year;
     float price;
+    char genre[DIM_STR];
 } Libro;
-
-typedef enum {
-    ADVENTURE,
-    DYSTOPIAN,
-    FANTASY,
-    GOTHIC,
-    HISTORICAL_FICTION,
-    LITERARY_FICTION,
-    MEMOIR,
-    MODERNIST,
-    MYSTERY,
-    PHILOSOPHICAL,
-    POETRY,
-    ROMANCE,
-    MAGICAL_REALISM,
-    EXISTENTIALIST,
-    PLAY,
-    SCIENCE_FICTION,
-    CATEGORY_COUNT 
-} Categoria;
 
 Libro libreria[DIM];
 
-//https://www.geeksforgeeks.org/relational-database-from-csv-files-in-c/
-void leggi_file(){
+// Funzione per leggere il file CSV e popolare la libreria
+void leggi_file()
+{
     char buffer[BUFFER_DIM];
-    int colonna=0, riga=0;
+    int riga = 0;
     FILE *file = fopen("libreria_libri.csv", "r");
-    if(file == NULL){
-        printf("Errore apertura file\n");
-        exit(1); 
+    Libro libro;
+
+    if (file == NULL)
+    {
+        printf("Errore nell'apertura del file\n");
+        exit(1);
     }
-while(fgets(buffer, BUFFER_DIM,file)){
-    colonna=0;
-    riga++;
-    if(riga==1){
-        char *value = strok(buffer, ",");
-        while(value){
-            if(colonna==0)
-            {
-                
-            }
+
+    while (fgets(buffer, BUFFER_DIM, file))
+    {
+        if (riga == 0)
+        {
+            riga++;
+            continue;
         }
+
+        char *value = strtok(buffer, ",");
+        if (value == NULL)
+            break;
+
+        strcpy(libro.title, value);
+
+        value = strtok(NULL, ",");
+        strcpy(libro.author, value);
+
+        value = strtok(NULL, ",");
+        libro.year = atoi(value);
+
+        value = strtok(NULL, ",");
+        libro.price = atof(value);
+
+        value = strtok(NULL, ",\n");
+        strcpy(libro.genre, value);
+
+        // Inserisce il libro nella libreria
+        libreria[riga - 1] = libro;
+        riga++;
+        if (riga - 1 >= DIM)
+            break;
     }
+    fclose(file);
 }
 
+// Funzione per stampare tutti i libri della libreria
+void stampa_libreria()
+{
+    for (int i = 0; i < DIM; i++)
+    {
+        printf("Title: %s\n", libreria[i].title);
+        printf("Author: %s\n", libreria[i].author);
+        printf("Year: %d\n", libreria[i].year);
+        printf("Price: %.2f\n", libreria[i].price);
+        printf("Genre: %s\n", libreria[i].genre);
+        printf("-----------------------------------------------\n");
+    }
 }
 
 int main(int argc, char *argv[])
 {
-    if(argc!= 2){
-        printf("Errore numero argomenti\n");
-        exit(1);
-    }
-
+    leggi_file();
+    stampa_libreria();
     return 0;
 }
