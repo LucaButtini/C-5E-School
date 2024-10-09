@@ -25,22 +25,6 @@ typedef struct
 Categoria *categorie[DIM];
 int num_categorie = 0;
 
-/*Categoria *crea_categoria(char nome[])
-{
-    for (int i = 0; i < num_categorie; i++)
-    {
-        if (strcmp(categorie[i]->nome, nome) == 0)
-        {
-            return categorie[i];
-        }
-    }
-    Categoria *categoria = malloc(sizeof(Categoria));
-    strcpy(categoria->nome, nome);
-    categoria->libri = malloc(sizeof(Libro) * DIM);
-    categoria->num_libri = 0;
-    categorie[num_categorie++] = categoria;
-    return categoria;
-}*/
 Categoria *crea_categoria(char nome[])
 {
     nome[strcspn(nome, "\n")] = '\0';
@@ -169,7 +153,13 @@ Libro *ricerca_libro(char titolo[])
    return NULL;
 }
 
-
+void menu()
+{
+    printf("\n[1] -> STAMPA LIBRERIA\n");
+    printf("[2] -> STAMPA PER CATEGORIA\n");
+    printf("[3] -> RICERCA NOME\n");
+    printf("[4] -> ESCI\n");
+}
 void libera_memoria()
 {
     for (int i = 0; i < num_categorie; i++)
@@ -181,34 +171,53 @@ void libera_memoria()
 
 int main()
 {
+    int scelta, esci=0;
     char titolo_ricerca[DIM_STR], categoria_ricerca[DIM_STR];
     leggi_file();
-    stampa();
-    //prova ricerca categoria
-    printf("\nCerca libri di una categoria specifica\n");
-    fgets(categoria_ricerca, DIM_STR, stdin);
-    categoria_ricerca[strcspn(categoria_ricerca, "\n")] = '\0';
-    stampa_libri_categoria(categoria_ricerca);
-
-    //prova ricerca per nome
-    printf("\nCerca libro per titolo\n");
-    fgets(titolo_ricerca, DIM_STR, stdin);
-    titolo_ricerca[strcspn(titolo_ricerca, "\n")] = '\0';
-    Libro *libro_trovato=ricerca_libro(titolo_ricerca);
-    if (libro_trovato != NULL)
+    do 
     {
-        printf("\nLibro trovato:\n");
-        printf("Title: %s\n", libro_trovato->title);
-        printf("Author: %s\n", libro_trovato->author);
-        printf("Year: %d\n", libro_trovato->year);
-        printf("Price: %.2f\n", libro_trovato->price);
-        printf("Genre: %s\n", libro_trovato->genre);
-    }
-    else
-    {
-        printf("Libro non trovato\n");
-    }
-
+        menu();
+        printf("Inserisci la scelta: ");
+        scanf("%d", &scelta);
+        getchar();
+        switch(scelta)
+        {
+            case 1:
+            stampa();
+            break;
+            case 2:
+             printf("\nCerca libri di una categoria specifica\n");
+            fgets(categoria_ricerca, DIM_STR, stdin);
+            categoria_ricerca[strcspn(categoria_ricerca, "\n")] = '\0';
+            stampa_libri_categoria(categoria_ricerca);
+            break;
+            case 3:
+             printf("\nCerca libro per titolo\n");
+            fgets(titolo_ricerca, DIM_STR, stdin);
+            titolo_ricerca[strcspn(titolo_ricerca, "\n")] = '\0';
+            Libro *libro_trovato=ricerca_libro(titolo_ricerca);
+            if (libro_trovato != NULL)
+            {
+                printf("\nLibro trovato:\n");
+                printf("Title: %s\n", libro_trovato->title);
+                printf("Author: %s\n", libro_trovato->author);
+                printf("Year: %d\n", libro_trovato->year);
+                printf("Price: %.2f\n", libro_trovato->price);
+                printf("Genre: %s\n", libro_trovato->genre);
+            }
+            else
+            {
+                printf("Libro non trovato\n");
+            }
+            break;
+            case 4:
+            esci=1;
+            break;
+            default:
+            printf("Scelta errata\n");
+            break;
+        }
+    }while(!esci);
     libera_memoria();
     return 0;
 }
