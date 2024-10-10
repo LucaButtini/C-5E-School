@@ -25,6 +25,34 @@ typedef struct
 Categoria *categorie[DIM]; // array di categorie
 int num_categorie = 0;     // contatore di categorie
 
+void rimuovi_newline(char *str)
+{
+    size_t len = strlen(str); // Calcola la lunghezza della stringa di input
+    // Se l'ultimo carattere è un carattere di nuova riga
+    if (len > 0 && (str[len - 1] == '\n' || str[len - 1] == '\r'))
+    {
+        str[len - 1] = '\0'; // Sostituisce il newline con un terminatore di stringa
+    }
+    // Rimuovi eventuali spazi finali
+    while (len > 0 && (str[len - 1] == ' '))
+    {
+        str[--len] = '\0'; // Riduce la lunghezza della stringa, sostituendo gli spazi finali con il terminatore
+    }
+    // Inizializza una variabile per individuare l'inizio della stringa
+    size_t start = 0;
+    // Rimuovi eventuali spazi iniziali
+    while (str[start] == ' ')
+    {
+        start++; // Incrementa l'indice di partenza per saltare gli spazi iniziali
+    }
+    // Se ci sono spazi iniziali da rimuovere
+    if (start > 0)
+    {
+        // Sposta la stringa a sinistra, sovrascrivendo gli spazi iniziali
+        memmove(str, str + start, len - start + 1); // Copia la parte rimanente della stringa
+    }
+}
+
 // funzione che crea la categoria
 Categoria *crea_categoria(char nome[])
 {
@@ -97,9 +125,11 @@ void leggi_file()
 // Funzione per stampare i libri di una categoria specifica
 void stampa_libri_categoria(char nome_categoria[])
 {
-    nome_categoria[strcspn(nome_categoria, "\n")] = '\0'; // rimuovo il newline
+    // nome_categoria[strcspn(nome_categoria, "\n")] = '\0'; // rimuovo il newline
+    rimuovi_newline(nome_categoria);
     for (int i = 0; i < num_categorie; i++)
     {
+        rimuovi_newline(categorie[i]->nome);
         if (strcmp(categorie[i]->nome, nome_categoria) == 0) // ricerco la categoria
         {
             printf("Libri nella categoria \"%s\":\n", categorie[i]->nome);
@@ -190,9 +220,11 @@ int main()
         case 2:
             // ricerca categoria e stampa libri per categoria
             printf("\nCerca libri di una categoria specifica\n");
-            fgets(categoria_ricerca, DIM_STR, stdin);                   // inserimento categoria
+            fgets(categoria_ricerca, DIM_STR, stdin);
+            //scanf("%[^\n]s", categoria_ricerca);                        // inserimento categoria
             categoria_ricerca[strcspn(categoria_ricerca, "\n")] = '\0'; // tolgo il newline
-            stampa_libri_categoria(categoria_ricerca);                  // stampa
+            stampa_libri_categoria(categoria_ricerca);
+            // se lung maggiore di 0 o la fine != a \n
             break;
         case 3:
             // ricerca libro per titolo e stampa
