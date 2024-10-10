@@ -25,34 +25,34 @@ typedef struct
 Categoria *categorie[DIM]; // array di categorie
 int num_categorie = 0;     // contatore di categorie
 
-void rimuovi_newline(char *str)
+void rimuovi_newline(char *stringa)
 {
-    size_t len = strlen(str); // Calcola la lunghezza della stringa di input
-    // Se l'ultimo carattere è un carattere di nuova riga
-    if (len > 0 && (str[len - 1] == '\n' || str[len - 1] == '\r'))
+    size_t lung = strlen(stringa), inizio = 0;
+
+    // guarda se c'è il carattere newline
+    if (lung > 0 && (stringa[lung - 1] == '\n' || stringa[lung - 1] == '\r'))
     {
-        str[len - 1] = '\0'; // Sostituisce il newline con un terminatore di stringa
+        stringa[lung - 1] = '\0'; // lo cambia con il terminatore di stringa
     }
-    // Rimuovi eventuali spazi finali
-    while (len > 0 && (str[len - 1] == ' '))
+
+    // se ci sono toglie spazi finali
+    while (lung > 0 && (stringa[lung - 1] == ' '))
     {
-        str[--len] = '\0'; // Riduce la lunghezza della stringa, sostituendo gli spazi finali con il terminatore
+        stringa[--lung] = '\0'; // cambia spazi finali col terminatore
     }
-    // Inizializza una variabile per individuare l'inizio della stringa
-    size_t start = 0;
-    // Rimuovi eventuali spazi iniziali
-    while (str[start] == ' ')
+    // se ci sono toglie spazi iniziali
+    while (stringa[inizio] == ' ')
     {
-        start++; // Incrementa l'indice di partenza per saltare gli spazi iniziali
+        inizio++; // salta spazi iniziali
     }
-    // Se ci sono spazi iniziali da rimuovere
-    if (start > 0)
+    // se ci sono spazi iniziali da rimuovere
+    if (inizio > 0)
     {
-        // Sposta la stringa a sinistra, sovrascrivendo gli spazi iniziali
-        memmove(str, str + start, len - start + 1); // Copia la parte rimanente della stringa
+        // sovrascrive gli spazi eventuali
+        // parametri: destinazione, sorgente, dimensione
+        memmove(stringa, stringa + inizio, lung - inizio + 1);
     }
 }
-
 // funzione che crea la categoria
 Categoria *crea_categoria(char nome[])
 {
@@ -126,10 +126,10 @@ void leggi_file()
 void stampa_libri_categoria(char nome_categoria[])
 {
     // nome_categoria[strcspn(nome_categoria, "\n")] = '\0'; // rimuovo il newline
-    rimuovi_newline(nome_categoria);
     for (int i = 0; i < num_categorie; i++)
     {
         rimuovi_newline(categorie[i]->nome);
+        rimuovi_newline(nome_categoria);
         if (strcmp(categorie[i]->nome, nome_categoria) == 0) // ricerco la categoria
         {
             printf("Libri nella categoria \"%s\":\n", categorie[i]->nome);
@@ -221,7 +221,7 @@ int main()
             // ricerca categoria e stampa libri per categoria
             printf("\nCerca libri di una categoria specifica\n");
             fgets(categoria_ricerca, DIM_STR, stdin);
-            //scanf("%[^\n]s", categoria_ricerca);                        // inserimento categoria
+            // scanf("%[^\n]s", categoria_ricerca);                        // inserimento categoria
             categoria_ricerca[strcspn(categoria_ricerca, "\n")] = '\0'; // tolgo il newline
             stampa_libri_categoria(categoria_ricerca);
             // se lung maggiore di 0 o la fine != a \n
