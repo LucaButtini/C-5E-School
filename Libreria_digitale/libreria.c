@@ -4,75 +4,75 @@
 
 #define DIM_STR 100
 #define BUFFER_DIM 1024
-#define DIM 38 // Dimensione della libreria come numero massimo di libri dal file CSV
+#define DIM 38 // dimensione libreria
 
 typedef struct
 {
-    char title[DIM_STR];
-    char author[DIM_STR];
-    int year;
-    float price;
-    char genre[DIM_STR];
-} Libro;
+    char title[DIM_STR];  // titolo libro
+    char author[DIM_STR]; // autore libro
+    int year;             // anno pubblicazione libro
+    float price;          // prezzo libro
+    char genre[DIM_STR];  // genere del libro
+} Libro;                  // struttura libro
 
 typedef struct
 {
-    char nome[DIM_STR];
-    Libro *libri;
+    char nome[DIM_STR]; // nome categoria
+    Libro *libri;       // puntatore ad array di libri
     int num_libri;
-} Categoria;
+} Categoria; // struttura categoria
 
-Categoria *categorie[DIM];
-int num_categorie = 0;
+Categoria *categorie[DIM]; // array di categorie
+int num_categorie = 0;     // contatore di categorie
 
+// funzione che crea la categoria
 Categoria *crea_categoria(char nome[])
 {
-    nome[strcspn(nome, "\n")] = '\0';
+    nome[strcspn(nome, "\n")] = '\0'; // rimozione il newline
     for (int i = 0; i < num_categorie; i++)
     {
-        if (strcmp(categorie[i]->nome, nome) == 0)
+        if (strcmp(categorie[i]->nome, nome) == 0) // cerco categoria se già esiste
         {
-            return categorie[i];
+            return categorie[i]; // ritorna la categoria
         }
     }
-    Categoria *categoria = malloc(sizeof(Categoria));
+    Categoria *categoria = malloc(sizeof(Categoria)); // allocazione memoria per creare la categoria
     strcpy(categoria->nome, nome);
-    categoria->libri = malloc(sizeof(Libro) * DIM);
-    categoria->num_libri = 0;
-    categorie[num_categorie++] = categoria;
-    return categoria;
+    categoria->libri = malloc(sizeof(Libro) * DIM); // allocazione memoria
+    categoria->num_libri = 0;                       // num libri inizializzato
+    categorie[num_categorie++] = categoria;         // aggiunta categoria
+    return categoria;                               // ritorno categoria
 }
-
 
 // Funzione per aggiungere un libro alla categoria specifica
 void libro_categoria(Libro libro)
 {
-    Categoria *categoria = crea_categoria(libro.genre);
-    categoria->libri[categoria->num_libri++] = libro;
+    Categoria *categoria = crea_categoria(libro.genre); // crea o ottiene la categoria
+    categoria->libri[categoria->num_libri++] = libro;   // aggiungo libro alla categoria
 }
 
 // Funzione per leggere il file CSV e popolare le categorie
 void leggi_file()
 {
-    char buffer[BUFFER_DIM];
-    int riga = 0;
-    FILE *file = fopen("libreria_libri.csv", "r");
+    char buffer[BUFFER_DIM];                       // buffer per lettura del file
+    int riga = 0;                                  // contatore righe
+    FILE *file = fopen("libreria_libri.csv", "r"); // apertura del file csv
     Libro libro;
 
-    if (file == NULL)
+    if (file == NULL) // controllo se file è aperto corretamente
     {
         printf("Errore nell'apertura del file\n");
         exit(1);
     }
 
-    while (fgets(buffer, BUFFER_DIM, file))
+    while (fgets(buffer, BUFFER_DIM, file)) // lettura righe di un file
     {
-        if (riga == 0)
-        { // Salta la riga di intestazione
+        if (riga == 0) // Salta la riga di intestazione
+        {
             riga++;
             continue;
         }
-
+        // uso la funzione token per popolare la struct libro
         char *value = strtok(buffer, ",");
         strcpy(libro.title, value);
 
@@ -88,37 +88,37 @@ void leggi_file()
         value = strtok(NULL, ",\n");
         strcpy(libro.genre, value);
 
-        libro_categoria(libro);
+        libro_categoria(libro); // aggiungo libro alla categoria corrispondente
         riga++;
     }
-    fclose(file);
+    fclose(file); // chiusura file
 }
 
 // Funzione per stampare i libri di una categoria specifica
 void stampa_libri_categoria(char nome_categoria[])
 {
-     nome_categoria[strcspn(nome_categoria, "\n")] = '\0';
+    nome_categoria[strcspn(nome_categoria, "\n")] = '\0'; // rimuovo il newline
     for (int i = 0; i < num_categorie; i++)
     {
-        if (strcmp(categorie[i]->nome, nome_categoria) == 0)
+        if (strcmp(categorie[i]->nome, nome_categoria) == 0) // ricerco la categoria
         {
             printf("Libri nella categoria \"%s\":\n", categorie[i]->nome);
             for (int j = 0; j < categorie[i]->num_libri; j++)
             {
-            printf("Categoria: %s\n", categorie[i]->nome);
-            printf("Title: %s\n", categorie[i]->libri[j].title);
-            printf("Author: %s\n", categorie[i]->libri[j].author);
-            printf("Year: %d\n", categorie[i]->libri[j].year);
-            printf("Price: %.2f\n", categorie[i]->libri[j].price);
-            printf("----------------------------\n");
+                printf("Categoria: %s\n", categorie[i]->nome);
+                printf("Title: %s\n", categorie[i]->libri[j].title);
+                printf("Author: %s\n", categorie[i]->libri[j].author);
+                printf("Year: %d\n", categorie[i]->libri[j].year);
+                printf("Price: %.2f\n", categorie[i]->libri[j].price);
+                printf("---------------------------------------------------\n");
             }
-            return; 
+            return; // esce dalla funzione se è stata trovata la categoria
         }
     }
-    printf("Categoria non trovata\n");
+    printf("Categoria non trovata\n"); // se non è trovata
 }
 
-// Funzione per stampare tutti i libri nella libreria con la loro categoria
+// Funzione per stampare tutti i libri nella libreria
 void stampa()
 {
     printf("Elenco dei libri nella libreria:\n");
@@ -136,23 +136,23 @@ void stampa()
     }
 }
 
-
-// Funzione per cercare un libro specifico in base al titolo
+// Funzione per cercare un libro in base al titolo
 Libro *ricerca_libro(char titolo[])
 {
     for (int i = 0; i < num_categorie; i++)
     {
         for (int j = 0; j < categorie[i]->num_libri; j++)
         {
-            if (strcmp(categorie[i]->libri[j].title, titolo) == 0)
+            if (strcmp(categorie[i]->libri[j].title, titolo) == 0) // ricerco il nome
             {
-                return &categorie[i]->libri[j];
+                return &categorie[i]->libri[j]; // ritorno puntatore al libro
             }
         }
     }
-   return NULL;
+    return NULL; // se non trovato ritorno null
 }
 
+// funzione stampa del menu
 void menu()
 {
     printf("\n[1] -> STAMPA LIBRERIA\n");
@@ -160,6 +160,7 @@ void menu()
     printf("[3] -> RICERCA NOME\n");
     printf("[4] -> ESCI\n");
 }
+// funzione per liberare la memoria dopo le malloc
 void libera_memoria()
 {
     for (int i = 0; i < num_categorie; i++)
@@ -171,32 +172,35 @@ void libera_memoria()
 
 int main()
 {
-    int scelta, esci=0;
-    char titolo_ricerca[DIM_STR], categoria_ricerca[DIM_STR];
-    leggi_file();
-    do 
+    int scelta, esci = 0;
+    char titolo_ricerca[DIM_STR], categoria_ricerca[DIM_STR]; // stringhe nome e categoria di ricerca
+    leggi_file();                                             // lettura file csv
+    do
     {
-        menu();
+        menu(); // visualizzazione menu
         printf("Inserisci la scelta: ");
-        scanf("%d", &scelta);
-        getchar();
-        switch(scelta)
+        scanf("%d", &scelta); // scelta menu
+        getchar();            // tolgo il newline dal buffer di input
+        switch (scelta)
         {
-            case 1:
+        case 1:
+            // stampa tutti i libri
             stampa();
             break;
-            case 2:
-             printf("\nCerca libri di una categoria specifica\n");
-            fgets(categoria_ricerca, DIM_STR, stdin);
-            categoria_ricerca[strcspn(categoria_ricerca, "\n")] = '\0';
-            stampa_libri_categoria(categoria_ricerca);
+        case 2:
+            // ricerca categoria e stampa libri per categoria
+            printf("\nCerca libri di una categoria specifica\n");
+            fgets(categoria_ricerca, DIM_STR, stdin);                   // inserimento categoria
+            categoria_ricerca[strcspn(categoria_ricerca, "\n")] = '\0'; // tolgo il newline
+            stampa_libri_categoria(categoria_ricerca);                  // stampa
             break;
-            case 3:
-             printf("\nCerca libro per titolo\n");
-            fgets(titolo_ricerca, DIM_STR, stdin);
-            titolo_ricerca[strcspn(titolo_ricerca, "\n")] = '\0';
-            Libro *libro_trovato=ricerca_libro(titolo_ricerca);
-            if (libro_trovato != NULL)
+        case 3:
+            // ricerca libro per titolo e stampa
+            printf("\nCerca libro per titolo\n");
+            fgets(titolo_ricerca, DIM_STR, stdin);                // inserimento titolo
+            titolo_ricerca[strcspn(titolo_ricerca, "\n")] = '\0'; // tolgo il newline
+            Libro *libro_trovato = ricerca_libro(titolo_ricerca);
+            if (libro_trovato != NULL) // se il libro è stato trovato
             {
                 printf("\nLibro trovato:\n");
                 printf("Title: %s\n", libro_trovato->title);
@@ -205,19 +209,19 @@ int main()
                 printf("Price: %.2f\n", libro_trovato->price);
                 printf("Genre: %s\n", libro_trovato->genre);
             }
-            else
+            else // se non è stato trovato
             {
                 printf("Libro non trovato\n");
             }
             break;
-            case 4:
-            esci=1;
+        case 4:
+            esci = 1; // flag per uscire dal ciclo
             break;
-            default:
+        default: // se la scelta è errata
             printf("Scelta errata\n");
             break;
         }
-    }while(!esci);
-    libera_memoria();
+    } while (!esci);
+    libera_memoria(); // libero la mmemoria
     return 0;
 }
