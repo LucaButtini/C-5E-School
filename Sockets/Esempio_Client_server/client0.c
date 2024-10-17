@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
     char str1[DIM];                               // Stringa da inviare
     int socketfd;                                 // identificatore della socket
     // creazione e definizione del Socket di tipo stream tcp pg 163
-    socketfd = socket(AF_INET, SOCK_STREAM, 0);
+    socketfd = socket(AF_INET, SOCK_STREAM, 0); // socket() restituisce un numero, in caso di successo >0, in caso di errore ritorna -1
     // connessione al server pag.173
     connect(socketfd, (struct sockaddr *)&servizio, sizeof(servizio));
     printf("Inserisci la stringa\n");
