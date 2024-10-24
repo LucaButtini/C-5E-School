@@ -1,6 +1,8 @@
 {
     "editor.formatOnSave": true,
     "files.associations": {
-        "socket.h": "c"
+        "socket.h": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c"
     }
 }
