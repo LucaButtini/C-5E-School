@@ -51,13 +51,14 @@ int main()
         read(soa, stringa, sizeof(stringa));
         conta_cons_e_voc(stringa, &cons, &voc);
         int len = snprintf(risposta, sizeof(risposta), "Stringa -> [%s], Vocali -> [%d], Consonanti -> [%d]\n", stringa, voc, cons);
+        // controlla se l'output è stato troncato
         if (len >= sizeof(risposta))
         {
-            fprintf(stderr, "Attenzione: l'output è stato troncato!\n");
+            printf("Output troncato\n");
+            exit(-1);
         }
         write(soa, risposta, strlen(risposta) + 1);
         close(soa);
     }
-    close(socketfd);
     return 0;
 }

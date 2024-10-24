@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 2)
     {
-        printf("Errore: fornire una stringa come argomento.\n");
+        printf("Errore argomenti\n");
         exit(-1);
     }
     char risposta[DIM_STR];
@@ -26,8 +26,10 @@ int main(int argc, char *argv[])
 
     socketfd = socket(AF_INET, SOCK_STREAM, 0);
     connect(socketfd, (struct sockaddr *)&servizio, sizeof(servizio));
+
     write(socketfd, argv[1], strlen(argv[1]) + 1);
     read(socketfd, risposta, sizeof(risposta));
+
     printf("%s", risposta);
     close(socketfd);
     return 0;
