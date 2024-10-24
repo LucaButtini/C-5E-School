@@ -18,7 +18,7 @@ int main()
 {
     struct sockaddr_in servizio, addr_remoto; // record con i dati del server e del client
     int socketfd, soa, fromlen = sizeof(servizio);
-    char str[DIM], newstr[DIM] = "ricevuta";
+    char str[DIM], newstr[DIM] = "ricevuta\n";
     // definizione dei dati del socket
     servizio.sin_family = AF_INET;
     servizio.sin_addr.s_addr = htonl(INADDR_ANY);
