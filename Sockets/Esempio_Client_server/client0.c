@@ -23,8 +23,8 @@ int main(int argc, char *argv[])
     int socketfd;                                 // identificatore della socket
     // creazione e definizione del Socket di tipo stream tcp pg 163
     socketfd = socket(AF_INET, SOCK_STREAM, 0); // socket() restituisce un numero, in caso di successo >0, in caso di errore ritorna -1
-    // connessione al server pag.173
-    connect(socketfd, (struct sockaddr *)&servizio, sizeof(servizio)); //quando viene accettata dal server la connessione 
+    // per fare la connessione serve che la socket sia stata creata e l'indirizzo e la porta
+    connect(socketfd, (struct sockaddr *)&servizio, sizeof(servizio)); // quando viene accettata dal server la connessione
     printf("Inserisci la stringa\n");
     scanf("%s", str1);
     write(socketfd, str1, sizeof(str1));
