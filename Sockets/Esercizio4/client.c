@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     write(socketfd, &car, 1);
 
     read(socketfd, &occorrenze, sizeof(int));
-    printf("Occorrenze del carattere '%s': %d\n", argv[2], occorrenze);
+    printf("Occorrenze del carattere '%c': %d\n", car, occorrenze);
 
     close(socketfd);
     return 0;
