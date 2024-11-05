@@ -9,28 +9,31 @@
 #include <ctype.h>
 #include <unistd.h>
 
-#define DIM 50
+#define DIM 4
 #define SERVERPORT 1313
 
-// Funzione per contare le occorrenze del carattere 'car' nella stringa 'str'
-int conta_occorrenze(char car, char str[])
+int calcola_somma(int vettore[])
 {
-    int conta = 0;
-    for (int i = 0; i < strlen(str); i++)
+    int somma = 0;
+    for (int i = 0; i < DIM; i++)
     {
-        if (str[i] == car)
-            conta++;
+        somma += vettore[i];
     }
-    return conta;
+    return somma;
+}
+
+double calcola_media(int somma)
+{
+    return (double)somma / DIM;
 }
 
 int main(int argc, char *argv[])
 {
     struct sockaddr_in servizio, addr_remoto;
     int socketfd, soa, fromlen = sizeof(addr_remoto);
-    char str[DIM];
-    char car;
-    int occorrenze;
+    int vettore[DIM];
+    int somma;
+    double media;
 
     servizio.sin_family = AF_INET;
     servizio.sin_addr.s_addr = htonl(INADDR_ANY);
@@ -44,22 +47,18 @@ int main(int argc, char *argv[])
     {
         printf("\n\nServer in ascolto...");
         fflush(stdout);
+
         soa = accept(socketfd, (struct sockaddr *)&addr_remoto, &fromlen);
 
-        read(soa, str, sizeof(str));
-        read(soa, &car, sizeof(char));
+        read(soa, vettore, sizeof(vettore));
 
-        printf("Stringa ricevuta: %s\n", str);
-        printf("Carattere ricevuto: %c\n", car);
+        somma = calcola_somma(vettore);
+        media = calcola_media(somma);
 
-        occorrenze = conta_occorrenze(car, str);
-        printf("Il carattere è presente %d volte\n", occorrenze);
-
-        write(soa, &occorrenze, sizeof(int));
-
+        write(soa, &somma, sizeof(somma));
+        write(soa, &media, sizeof(media));
         close(soa);
     }
-
     close(socketfd);
     return 0;
 }
