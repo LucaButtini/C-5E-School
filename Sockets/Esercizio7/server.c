@@ -4,42 +4,39 @@
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netinet/in.h>
-#include <string.h>
-#include <errno.h>
-#include <ctype.h>
 #include <unistd.h>
 
 #define DIM 4
 #define SERVERPORT 1313
 
-int somma_pari(int vettore[], int n)
+int calcola_somma_pari(int vettore[], int n)
 {
     int somma = 0;
     for (int i = 0; i < n; i++)
     {
         if (vettore[i] % 2 == 0)
-        { // Numero pari
+        {
             somma += vettore[i];
         }
     }
     return somma;
 }
 
-// Funzione per calcolare la somma dei numeri dispari
-int somma_dispari(int vettore[], int n)
+
+int calcola_somma_dispari(int vettore[], int n)
 {
     int somma = 0;
     for (int i = 0; i < n; i++)
     {
         if (vettore[i] % 2 != 0)
-        { // Numero dispari
+        {
             somma += vettore[i];
         }
     }
     return somma;
 }
 
-// Funzione per contare i numeri pari
+
 int conta_pari(int vettore[], int n)
 {
     int count = 0;
@@ -53,7 +50,7 @@ int conta_pari(int vettore[], int n)
     return count;
 }
 
-// Funzione per contare i numeri dispari
+
 int conta_dispari(int vettore[], int n)
 {
     int count = 0;
@@ -69,14 +66,12 @@ int conta_dispari(int vettore[], int n)
 
 double calcola_media(int somma, int conteggio)
 {
-    if (conteggio == 0)
+    double media = 0.0;
+    if (conteggio > 0)
     {
-        return 0; 
+        media = (double)somma / conteggio;
     }
-    else
-    {
-        return (double)somma / conteggio;
-    }
+    return media;
 }
 
 int main(int argc, char *argv[])
@@ -97,20 +92,28 @@ int main(int argc, char *argv[])
 
     for (;;)
     {
-        printf("\n\nServer in ascolto...");
+        printf("Server in ascolto...\n");
         fflush(stdout);
 
         soa = accept(socketfd, (struct sockaddr *)&addr_remoto, &fromlen);
 
         read(soa, vettore, sizeof(vettore));
 
-        somma = calcola_somma(vettore);
-        media = calcola_media(somma);
+        
+        somma_pari = calcola_somma_pari(vettore, DIM);
+        somma_dispari = calcola_somma_dispari(vettore, DIM);
+        media_pari = calcola_media(somma_pari, conta_pari(vettore, DIM));
+        media_dispari = calcola_media(somma_dispari, conta_dispari(vettore, DIM));
 
-        write(soa, &somma, sizeof(somma));
-        write(soa, &media, sizeof(media));
+      
+        write(soa, &somma_pari, sizeof(somma_pari));
+        write(soa, &media_pari, sizeof(media_pari));
+        write(soa, &somma_dispari, sizeof(somma_dispari));
+        write(soa, &media_dispari, sizeof(media_dispari));
+
         close(soa);
     }
+
     close(socketfd);
     return 0;
 }

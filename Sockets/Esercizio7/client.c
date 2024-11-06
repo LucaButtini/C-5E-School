@@ -1,12 +1,12 @@
+// client.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <string.h>
-#include <errno.h>
-#include <ctype.h>
 #include <unistd.h>
+#include <arpa/inet.h>
 
 #define DIM 4
 #define SERVERPORT 1313
@@ -19,9 +19,9 @@ int main(int argc, char *argv[])
     int somma_pari, somma_dispari;
     double media_pari, media_dispari;
 
-    servizio.sin_addr.s_addr = htonl(INADDR_ANY);
     servizio.sin_family = AF_INET;
     servizio.sin_port = htons(SERVERPORT);
+    servizio.sin_addr.s_addr = htonl(INADDR_ANY);
 
     socketfd = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -29,11 +29,15 @@ int main(int argc, char *argv[])
 
     write(socketfd, vettore, sizeof(vettore));
 
-    read(socketfd, &somma, sizeof(somma));
-    read(socketfd, &media, sizeof(media));
+    read(socketfd, &somma_pari, sizeof(somma_pari));
+    read(socketfd, &media_pari, sizeof(media_pari));
+    read(socketfd, &somma_dispari, sizeof(somma_dispari));
+    read(socketfd, &media_dispari, sizeof(media_dispari));
 
-    printf("Somma: %d\n", somma);
-    printf("Media: %.2f\n", media);
+    printf("Somma dei numeri pari: %d\n", somma_pari);
+    printf("Media dei numeri pari: %.2f\n", media_pari);
+    printf("Somma dei numeri dispari: %d\n", somma_dispari);
+    printf("Media dei numeri dispari: %.2f\n", media_dispari);
 
     close(socketfd);
     return 0;
