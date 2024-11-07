@@ -9,10 +9,10 @@
 #define DIM 4
 #define SERVERPORT 1313
 
-int calcola_somma_pari(int vettore[], int n)
+int calcola_somma_pari(int vettore[])
 {
     int somma = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < DIM; i++)
     {
         if (vettore[i] % 2 == 0)
         {
@@ -22,11 +22,10 @@ int calcola_somma_pari(int vettore[], int n)
     return somma;
 }
 
-
-int calcola_somma_dispari(int vettore[], int n)
+int calcola_somma_dispari(int vettore[])
 {
     int somma = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < DIM; i++)
     {
         if (vettore[i] % 2 != 0)
         {
@@ -36,11 +35,10 @@ int calcola_somma_dispari(int vettore[], int n)
     return somma;
 }
 
-
-int conta_pari(int vettore[], int n)
+int conta_pari(int vettore[])
 {
     int count = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < DIM; i++)
     {
         if (vettore[i] % 2 == 0)
         {
@@ -50,11 +48,10 @@ int conta_pari(int vettore[], int n)
     return count;
 }
 
-
-int conta_dispari(int vettore[], int n)
+int conta_dispari(int vettore[])
 {
     int count = 0;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < DIM; i++)
     {
         if (vettore[i] % 2 != 0)
         {
@@ -99,13 +96,11 @@ int main(int argc, char *argv[])
 
         read(soa, vettore, sizeof(vettore));
 
-        
-        somma_pari = calcola_somma_pari(vettore, DIM);
-        somma_dispari = calcola_somma_dispari(vettore, DIM);
-        media_pari = calcola_media(somma_pari, conta_pari(vettore, DIM));
-        media_dispari = calcola_media(somma_dispari, conta_dispari(vettore, DIM));
+        somma_pari = calcola_somma_pari(vettore);
+        somma_dispari = calcola_somma_dispari(vettore);
+        media_pari = calcola_media(somma_pari, conta_pari(vettore));
+        media_dispari = calcola_media(somma_dispari, conta_dispari(vettore));
 
-      
         write(soa, &somma_pari, sizeof(somma_pari));
         write(soa, &media_pari, sizeof(media_pari));
         write(soa, &somma_dispari, sizeof(somma_dispari));
@@ -113,7 +108,6 @@ int main(int argc, char *argv[])
 
         close(soa);
     }
-
     close(socketfd);
     return 0;
 }
