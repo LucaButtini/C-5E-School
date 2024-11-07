@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
     struct sockaddr_in servizio;
     int socketfd;
-    int vettore[DIM] = {-5, 10, 69, 26};
+    int vettore[DIM] = {10, -5, 69, 26};
 
     servizio.sin_addr.s_addr = htonl(INADDR_ANY);
     servizio.sin_port = htons(SERVERPORT);
@@ -25,6 +25,14 @@ int main(int argc, char *argv[])
     connect(socketfd, (struct sockaddr *)&servizio, sizeof(servizio));
 
     write(socketfd, vettore, sizeof(vettore));
-    
+
+    read(socketfd, vettore, sizeof(vettore));
+
+    for (int i = 0; i < DIM; i++)
+    {
+        printf("[%d] --> %d\n", i, vettore[i]);
+    }
+
+    close(socketfd);
     return 0;
 }
