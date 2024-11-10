@@ -4,7 +4,8 @@
     "socket.h": "c",
     "stdlib.h": "c",
     "stdio.h": "c",
-    "unistd.h": "c"
+    "unistd.h": "c",
+    "in.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
