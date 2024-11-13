@@ -1,68 +1,60 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netinet/in.h>
+#include <string.h>
 #include <unistd.h>
 
-#define DIM 4
 #define SERVERPORT 1313
+#define DIM 4
 
-int main()
+int main(int argc, char **argv)
 {
     struct sockaddr_in servizio;
 
+    servizio.sin_family = AF_INET;
     servizio.sin_addr.s_addr = htonl(INADDR_ANY);
     servizio.sin_port = htons(SERVERPORT);
-    servizio.sin_family = AF_INET;
 
-    int vett1[DIM] = {-5, 10, 69, 26}, vett2[DIM] = {13, 34, -3, 9}, somma[DIM], sottrazione[DIM], moltiplicazione[DIM], socketfd;
-    double divisione[DIM];
+    int socketfd;
+    double vett1[DIM] = {25, 44, -7, 48}, vett2[DIM] = {18, 52, 9, -21};
+    double somma[DIM], differenza[DIM], prodotto[DIM], quoziente[DIM];
 
     socketfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (socketfd < 0)
-    {
-        perror("Errore nella creazione del socket");
-        exit(EXIT_FAILURE);
-    }
-
-    if (connect(socketfd, (struct sockaddr *)&servizio, sizeof(servizio)) < 0)
-    {
-        perror("Errore nella connessione al server");
-        close(socketfd);
-        exit(EXIT_FAILURE);
-    }
+    connect(socketfd, (struct sockaddr *)&servizio, sizeof(servizio));
 
     write(socketfd, vett1, sizeof(vett1));
     write(socketfd, vett2, sizeof(vett2));
 
-    // Ricezione dei risultati dal server
     read(socketfd, somma, sizeof(somma));
-    read(socketfd, sottrazione, sizeof(sottrazione));
-    read(socketfd, moltiplicazione, sizeof(moltiplicazione));
-    read(socketfd, divisione, sizeof(divisione));
+    read(socketfd, differenza, sizeof(differenza));
+    read(socketfd, prodotto, sizeof(prodotto));
+    read(socketfd, quoziente, sizeof(quoziente));
 
-    // Stampa dei risultati
-    printf("Somma: ");
+    printf("\nSomma:\n");
     for (int i = 0; i < DIM; i++)
-        printf("%d ", somma[i]);
-    printf("\n");
+    {
+        printf("[%d] %f\n", i, somma[i]);
+    }
 
-    printf("Sottrazione: ");
+    printf("\nDifferenza:\n");
     for (int i = 0; i < DIM; i++)
-        printf("%d ", sottrazione[i]);
-    printf("\n");
+    {
+        printf("[%d] %f\n", i, differenza[i]);
+    }
 
-    printf("Moltiplicazione: ");
+    printf("\nProdotto:\n");
     for (int i = 0; i < DIM; i++)
-        printf("%d ", moltiplicazione[i]);
-    printf("\n");
+    {
+        printf("[%d] %f\n", i, prodotto[i]);
+    }
 
-    printf("Divisione: ");
+    printf("\nQuoziente:\n");
     for (int i = 0; i < DIM; i++)
-        printf("%.2f ", divisione[i]);
-    printf("\n");
+    {
+        printf("[%d] %f\n", i, quoziente[i]);
+    }
 
     close(socketfd);
     return 0;
