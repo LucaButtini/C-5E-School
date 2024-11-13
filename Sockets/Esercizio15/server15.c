@@ -13,18 +13,16 @@ void lettere_comuni(char str1[], char str2[], char comuni[])
 {
     int pos = 0;
 
-    for (int i = 0; str1[i] != '\0'; i++)
+    for (int i = 0; i < strlen(str1); i++)
     {
-        for (int j = 0; str2[j] != '\0'; j++)
+        for (int j = 0; j < strlen(str2); j++)
         {
             if (str1[i] == str2[j])
             {
-                comuni[pos++] = str1[i]; 
-                break;                   
+                comuni[pos++] = str1[i];
             }
         }
     }
-    comuni[pos] = '\0'; 
 }
 
 int main()
@@ -60,10 +58,10 @@ int main()
 
         fflush(stdout);
 
-        soa = accept(socketfd, (struct sockaddr *)&addr_remoto, &fromlen);
+      soa = accept(socketfd, (struct sockaddr*)&addr_remoto, &fromlen);
 
         read(soa, str1, sizeof(str1));
-        read(soa, str1, sizeof(str2));
+        read(soa, str2, sizeof(str2));
 
         lettere_comuni(str1, str2, comuni);
 

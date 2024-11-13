@@ -45,10 +45,11 @@ int main()
     write(socketfd, str1, sizeof(str1));
     write(socketfd, str2, sizeof(str2));
 
+    fflush(stdout);
+
     read(socketfd, comuni, sizeof(comuni));
 
     printf("Occorrenze comuni: %s\n", comuni);
-
 
     close(socketfd);
     return 0;
