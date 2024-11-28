@@ -3,3 +3,12 @@
 * {
     font-family: "Poppins", sans-serif;
 }
+
+.card:hover {
+    transform: scale(1.1);
+    transition: 0.8s;
+}
+
+body {
+    background-color: #fbfff4;
+}
