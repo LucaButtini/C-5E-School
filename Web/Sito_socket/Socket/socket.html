@@ -46,7 +46,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card h-100">
-                    <img src="../Immagini/sock_tcp.webp" class="card-img-top" alt="Esempio socket">
+                    <img src="../Immagini/sock_tcp.webp" class="card-img-top" alt="Esempio socket" data-bs-toggle="modal" data-bs-target="#socketModal1">
                     <div class="card-body">
                         <p class="card-text">Schema logico della comunicazione TCP mediante socket nel linguaggio C.</p>
                     </div>
@@ -57,7 +57,7 @@
         <div class="row mt-5">
             <div class="col-md-4">
                 <div class="card h-100">
-                    <img src="../Immagini/sock_udp.webp" class="card-img-top" alt="Esempio socket">
+                    <img src="../Immagini/sock_udp.webp" class="card-img-top" alt="Esempio socket" data-bs-toggle="modal" data-bs-target="#socketModal2">
                     <div class="card-body">
                         <p class="card-text">Schema logico della comunicazione UDP mediante socket nel linguaggio C.</p>
                     </div>
@@ -91,7 +91,36 @@
             </div>
         </div>
     </div>
-
+    <!-- Modal 1 per immagine TCP -->
+    <div class="modal fade" id="socketModal1" tabindex="-1" aria-labelledby="socketModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="socketModalLabel1">Schema della comunicazione TCP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="../Immagini/sock_tcp.webp" class="img-fluid" alt="Esempio socket">
+                    <p>Schema logico della comunicazione TCP mediante socket nel linguaggio C.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal 2 per immagine UDP -->
+    <div class="modal fade" id="socketModal2" tabindex="-1" aria-labelledby="socketModalLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered"> 
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="socketModalLabel2">Schema della comunicazione UDP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="../Immagini/sock_udp.webp" class="img-fluid" alt="Esempio socket">
+                    <p>Schema logico della comunicazione UDP mediante socket nel linguaggio C.</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Footer -->
     <footer>
         <div class="bg-dark py-5 mt-5 text-center">
@@ -99,6 +128,7 @@
             <small class="text-white-50">&copy; 2024 SOCKET E RETI. All rights reserved.</small>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
