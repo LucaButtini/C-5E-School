@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="../CSS/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="icon" type="image/x-icon" href="../Immagini/cpu.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/x-icon" href="../Immagini/cpu.ico">
     <title>Modello ISO-OSI</title>
 </head>
 
@@ -33,6 +33,95 @@
             </div>
         </div>
     </nav>
+
+     <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-3 mb-3"><strong>Modello ISO-OSI</strong></h1>
+            <p class="lead">Descrizione del modello ISO-OSI e dei suoi sette livelli.</p>
+        </div>
+
+        <!-- Primo blocco -->
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card h-100" data-bs-toggle="modal" data-bs-target="#osiModal1">
+                    <img src="../Immagini/modello_osi.webp" class="card-img-top" alt="Modello ISO-OSI">
+                    <div class="card-body">
+                        <p class="card-text">rappresentazione dei livelli dello standard ISO-OSI.<br>Leggiamo lo schema dal basso verso l'alto.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 py-4">
+                <h2>Cos'è il modello ISO-OSI?</h2>
+                <p>Il modello ISO-OSI è una struttura teorica standardizzata che suddivide il processo di comunicazione di rete in sette livelli distinti. Ogni livello ha funzioni specifiche e dipende dal funzionamento degli altri livelli per garantire un trasferimento efficace dei dati. I livelli sono:</p>
+                <ol>
+                    <li><strong>Fisico:</strong> Si occupa della trasmissione di segnali elettrici, ottici o radio necessari per la comunicazione fisica tra dispositivi.</li>
+                    <li><strong>Collegamento dati:</strong> Garantisce un trasferimento sicuro e privo di errori tra due nodi direttamente collegati nella rete.</li>
+                    <li><strong>Rete:</strong> Gestisce il percorso dei dati attraverso la rete, occupandosi di instradamento e indirizzamento.</li>
+                    <li><strong>Trasporto:</strong> Assicura che i dati vengano consegnati in modo completo, ordinato e senza errori tra gli host.</li>
+                    <li><strong>Sessione:</strong> Coordina e controlla le interazioni tra le applicazioni, gestendo l'apertura e la chiusura delle sessioni di comunicazione.</li>
+                    <li><strong>Presentazione:</strong> Si dedica alla formattazione, compressione e crittografia dei dati per garantire una rappresentazione comprensibile tra applicazioni.</li>
+                    <li><strong>Applicazione:</strong> Fornisce le interfacce e i servizi necessari per consentire agli utenti di interagire direttamente con le applicazioni di rete.</li>                    
+                </ol>
+            </div>
+        </div>
+
+        <!-- Secondo blocco -->
+        <div class="row mt-5">
+            <div class="col-md-6 py-4">
+                <h2>Il livello di trasporto</h2>
+                <p>Il livello di trasporto è responsabile della trasmissione affidabile dei dati tra due dispositivi. Le sue principali funzioni includono:</p>
+                <ul>
+                    <li><strong>Segmentazione:</strong> Divide i dati in segmenti più piccoli per la trasmissione.</li>
+                    <li><strong>Controllo di flusso:</strong> Regola la velocità di trasmissione per evitare sovraccarichi.</li>
+                    <li><strong>Rilevazione errori:</strong> Rileva e corregge eventuali errori durante il trasferimento.</li>
+                    <li><strong>Riassemblaggio:</strong> Ricostruisce i dati originali dai segmenti ricevuti.</li>
+                </ul>
+                <p>Questo livello garantisce un collegamento affidabile tra le applicazioni e l'infrastruttura di rete, assicurando che i dati vengano trasmessi correttamente.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100" data-bs-toggle="modal" data-bs-target="#osiModal2">
+                    <img src="../Immagini/liv-4.webp" class="card-img-top" alt="Livello di trasporto">
+                    <div class="card-body">
+                        <p class="card-text">Il livello di trasporto garantisce la trasmissione affidabile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Modello ISO-OSI -->
+    <div class="modal fade" id="osiModal1" tabindex="-1" aria-labelledby="osiModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="osiModalLabel1">I 7 livelli del modello ISO-OSI</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="../Immagini/modello_osi.webp" class="img-fluid" alt="Modello ISO-OSI">
+                    <p>Il modello ISO-OSI rappresenta uno standard per comprendere come i dati viaggiano su una rete.
+                        Ogni livello svolge un ruolo fondamentale per garantire la comunicazione.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Livello di trasporto -->
+    <div class="modal fade" id="osiModal2" tabindex="-1" aria-labelledby="osiModalLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="osiModalLabel2">Il livello di trasporto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="../Immagini/liv-4.webp" class="img-fluid" alt="Livello di trasporto">
+                    <p>Il livello di trasporto assicura che i dati vengano trasmessi in modo affidabile e corretto. È
+                        essenziale per la segmentazione, il controllo di flusso e la rilevazione degli errori.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer>
         <div class="bg-dark py-5 mt-5 text-center">
