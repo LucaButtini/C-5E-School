@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="../CSS/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-        <link rel="icon" type="image/x-icon" href="../Immagini/mainboard.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/x-icon" href="../Immagini/mainboard.ico">
     <title>TCP vs UDP</title>
 </head>
 
@@ -32,6 +32,113 @@
             </div>
         </div>
     </nav>
+
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-3 mb-3 text-primary ombra"><strong>TCP vs UDP</strong></h1>
+            <p class="lead">Confronto tra i due principali protocolli di trasporto nella rete.</p>
+        </div>
+
+        <!-- Prima sezione: TCP -->
+        <div class="row mt-5">
+            <div class="col-md-6 py-4">
+                <h2><strong>TCP (Transmission Control Protocol)</strong></h2>
+                <p>TCP è un protocollo orientato alla connessione che garantisce una trasmissione affidabile dei dati.
+                    Ideale per applicazioni in cui è fondamentale che i dati arrivino in ordine e senza perdite.</p>
+                <ul>
+                    <li><strong>Connessione affidabile:</strong> Stabilisce una connessione tra mittente e destinatario
+                        prima di inviare dati.</li>
+                    <li><strong>Controllo di flusso:</strong> Regola la velocità di trasmissione per evitare
+                        congestioni.</li>
+                    <li><strong>Rilevazione e correzione degli errori:</strong> I pacchetti persi vengono ritrasmessi.
+                    </li>
+                    <li><strong>Utilizzo:</strong> Navigazione web, email, trasferimento file (HTTP, FTP, SMTP).</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100" data-bs-toggle="modal" data-bs-target="#tcpModal">
+                    <img src="../Immagini/tcp.webp" class="card-img-top" alt="Schema TCP">
+                    <div class="card-body">
+                        <p class="card-text">Schema della trasmissione affidabile con TCP.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seconda sezione: UDP -->
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card h-100" data-bs-toggle="modal" data-bs-target="#udpModal">
+                    <img src="../Immagini/udp.webp" class="card-img-top" alt="Schema UDP">
+                    <div class="card-body">
+                        <p class="card-text">Schema della trasmissione veloce e leggera con UDP.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 py-4">
+                <h2><strong>UDP (User Datagram Protocol)</strong></h2>
+                <p>UDP è un protocollo senza connessione, progettato per essere rapido e leggero. È ideale per
+                    applicazioni in cui la velocità è più importante dell'affidabilità.</p>
+                <ul>
+                    <li><strong>Trasmissione senza connessione:</strong> I pacchetti vengono inviati senza instaurare
+                        una connessione.</li>
+                    <li><strong>Bassa latenza:</strong> Nessun controllo di flusso o ritrasmissione, riducendo i tempi
+                        di trasmissione.</li>
+                    <li><strong>Non affidabile:</strong> I pacchetti persi non vengono ritrasmessi.</li>
+                    <li><strong>Utilizzo:</strong> Streaming video/audio, gaming online, DNS.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal TCP -->
+    <div class="modal fade" id="tcpModal" tabindex="-1" aria-labelledby="tcpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tcpModalLabel">Protoccolo TCP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="../Immagini/tcp.webp" class="img-fluid mb-3" alt="Schema TCP">
+                    <p>
+                        Caratteristica fondamentale del TCP è il <strong>Three-Way Handshake</strong>, un processo in tre fasi
+                        per stabilire una connessione:
+                    </p>
+                    <ol>
+                        <li><strong>SYN:</strong> Il client invia un segmento SYN al server per richiedere una
+                            connessione.</li>
+                        <li><strong>SYN-ACK:</strong> Il server risponde con un segmento SYN-ACK, confermando la
+                            ricezione e richiedendo a sua volta una connessione.</li>
+                        <li><strong>ACK:</strong> Il client invia un segmento ACK per confermare la connessione,
+                            completando il processo.</li>
+                    </ol>
+                    <p>Questo meccanismo assicura che entrambe le parti siano pronte per comunicare, rendendo TCP ideale
+                        per applicazioni critiche come trasferimenti di file o navigazione web.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal UDP -->
+    <div class="modal fade" id="udpModal" tabindex="-1" aria-labelledby="udpModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="udpModalLabel">Protocollo UDP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="../Immagini/udp.webp" class="img-fluid" alt="Schema UDP">
+                    <p>Il protocollo UDP privilegia la velocità rispetto all'affidabilità.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Footer -->
     <footer>
         <div class="bg-dark py-5 mt-5 text-center">
