@@ -42,11 +42,16 @@
         <div class="row mt-5">
             <div class="col-md-6 py-4">
                 <h2><strong>Cos'è una socket?</strong></h2>
-                <p>Un socket, in informatica, indica un'astrazione software progettata per utilizzare delle API standard e condivise per la trasmissione e la ricezione di dati attraverso una rete oppure come meccanismo di IPC. È il punto in cui il codice applicativo di un processo accede al canale di comunicazione per mezzo di una porta, ottenendo una comunicazione tra processi che lavorano su due macchine fisicamente separate. Dal punto di vista di un programmatore un socket è un particolare oggetto sul quale leggere e scrivere i dati da trasmettere o ricevere.</p>
+                <p>Un socket, in informatica, indica un'astrazione software progettata per utilizzare delle API standard
+                    e condivise per la trasmissione e la ricezione di dati attraverso una rete oppure come meccanismo di
+                    IPC. È il punto in cui il codice applicativo di un processo accede al canale di comunicazione per
+                    mezzo di una porta, ottenendo una comunicazione tra processi che lavorano su due macchine
+                    fisicamente separate. Dal punto di vista di un programmatore un socket è un particolare oggetto sul
+                    quale leggere e scrivere i dati da trasmettere o ricevere.</p>
             </div>
             <div class="col-md-4">
                 <div class="card h-100 bg-dark text-white" data-bs-toggle="modal" data-bs-target="#socketModal1">
-                    <img src="../Immagini/sock_tcp.webp" class="card-img-top" alt="Esempio socket" >
+                    <img src="../Immagini/sock_tcp.webp" class="card-img-top" alt="Esempio socket">
                     <div class="card-body">
                         <p class="card-text">Schema logico della comunicazione TCP mediante socket nel linguaggio C.</p>
                     </div>
@@ -67,8 +72,10 @@
                 <h2><strong>Tipologie di socket</strong></h2>
                 <p>Le socket si classificano principalmente in due categorie:</p>
                 <ul>
-                    <li><strong>Stream Socket (TCP):</strong> Utilizzate per comunicazioni stabili e affidabili, dove è garantito l'ordine e la consegna dei dati. Si basano sul protocollo TCP.</li>
-                    <li><strong>Datagram Socket (UDP):</strong> Ideali per comunicazioni rapide e leggere, senza la necessità di stabilire una connessione fissa. Si basano sul protocollo UDP.</li>
+                    <li><strong>Stream Socket (TCP):</strong> Utilizzate per comunicazioni stabili e affidabili, dove è
+                        garantito l'ordine e la consegna dei dati. Si basano sul protocollo TCP.</li>
+                    <li><strong>Datagram Socket (UDP):</strong> Ideali per comunicazioni rapide e leggere, senza la
+                        necessità di stabilire una connessione fissa. Si basano sul protocollo UDP.</li>
                 </ul>
             </div>
         </div>
@@ -78,15 +85,21 @@
                 <h2><strong></strong>Processo di comunicazione</h2>
                 <p>La comunicazione tramite socket coinvolge due ruoli principali:</p>
                 <ol>
-                    <li><strong>Server:</strong> Il dispositivo che si occupa di ricevere le richieste, stabilire connessioni e gestire lo scambio dei dati.</li>
-                    <li><strong>Client:</strong> Il dispositivo che invia le richieste al server e si connette per ricevere o inviare informazioni.</li>
+                    <li><strong>Server:</strong> Il dispositivo che si occupa di ricevere le richieste, stabilire
+                        connessioni e gestire lo scambio dei dati.</li>
+                    <li><strong>Client:</strong> Il dispositivo che invia le richieste al server e si connette per
+                        ricevere o inviare informazioni.</li>
                 </ol>
                 <p>Il processo può essere descritto in quattro fasi fondamentali:</p>
                 <ul>
-                    <li><strong>Creazione della socket:</strong> Entrambi i dispositivi creano una socket come punto di accesso alla rete.</li>
-                    <li><strong>Stabilire la connessione:</strong> Il client si collega alla socket del server per iniziare la comunicazione.</li>
-                    <li><strong>Scambio dei dati:</strong> I messaggi o le informazioni vengono trasmessi tra client e server.</li>
-                    <li><strong>Chiusura:</strong> Terminata la comunicazione, la connessione viene chiusa per liberare risorse.</li>
+                    <li><strong>Creazione della socket:</strong> Entrambi i dispositivi creano una socket come punto di
+                        accesso alla rete.</li>
+                    <li><strong>Stabilire la connessione:</strong> Il client si collega alla socket del server per
+                        iniziare la comunicazione.</li>
+                    <li><strong>Scambio dei dati:</strong> I messaggi o le informazioni vengono trasmessi tra client e
+                        server.</li>
+                    <li><strong>Chiusura:</strong> Terminata la comunicazione, la connessione viene chiusa per liberare
+                        risorse.</li>
                 </ul>
             </div>
         </div>
@@ -108,7 +121,7 @@
     </div>
     <!-- Modal 2 per immagine UDP -->
     <div class="modal fade" id="socketModal2" tabindex="-1" aria-labelledby="socketModalLabel2" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"> 
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-dark text-white">
                 <div class="modal-header">
                     <h5 class="modal-title" id="socketModalLabel2">Schema della comunicazione UDP</h5>

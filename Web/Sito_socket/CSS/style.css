@@ -46,3 +46,18 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 10%; /* Aumenta la larghezza del contenitore della freccia */
+}
+
+.carousel-control-prev {
+    left: -60px; /* Posiziona la freccia precedente più a sinistra */
+}
+
+.carousel-control-next {
+    right: -60px; /* Posiziona la freccia successiva più a destra */
+}
+
+
