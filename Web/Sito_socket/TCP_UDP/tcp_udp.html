@@ -41,6 +41,14 @@
 
         <!-- Prima sezione: TCP -->
         <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card h-100 bg-dark text-white" data-bs-toggle="modal" data-bs-target="#tcpModal">
+                    <img src="../Immagini/tcp.webp" class="card-img-top" alt="Schema TCP">
+                    <div class="card-body">
+                        <p class="card-text">Schema della trasmissione affidabile con TCP.</p>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-6 py-4">
                 <h2><strong>TCP (Transmission Control Protocol)</strong></h2>
                 <p>TCP è un protocollo orientato alla connessione che garantisce una trasmissione affidabile dei dati.
@@ -55,26 +63,10 @@
                     <li><strong>Utilizzo:</strong> Navigazione web, email, trasferimento file (HTTP, FTP, SMTP).</li>
                 </ul>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100 bg-dark text-white" data-bs-toggle="modal" data-bs-target="#tcpModal">
-                    <img src="../Immagini/tcp.webp" class="card-img-top" alt="Schema TCP">
-                    <div class="card-body">
-                        <p class="card-text">Schema della trasmissione affidabile con TCP.</p>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Seconda sezione: UDP -->
         <div class="row mt-5">
-            <div class="col-md-4">
-                <div class="card h-100 bg-dark text-white" data-bs-toggle="modal" data-bs-target="#udpModal">
-                    <img src="../Immagini/udp.webp" class="card-img-top" alt="Schema UDP">
-                    <div class="card-body">
-                        <p class="card-text">Schema della trasmissione veloce e leggera con UDP.</p>
-                    </div>
-                </div>
-            </div>
             <div class="col-md-6 py-4">
                 <h2><strong>UDP (User Datagram Protocol)</strong></h2>
                 <p>UDP è un protocollo senza connessione, progettato per essere rapido e leggero. È ideale per
@@ -87,6 +79,14 @@
                     <li><strong>Non affidabile:</strong> I pacchetti persi non vengono ritrasmessi.</li>
                     <li><strong>Utilizzo:</strong> Streaming video/audio, gaming online, DNS.</li>
                 </ul>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 bg-dark text-white" data-bs-toggle="modal" data-bs-target="#udpModal">
+                    <img src="../Immagini/udp.webp" class="card-img-top" alt="Schema UDP">
+                    <div class="card-body">
+                        <p class="card-text">Schema della trasmissione veloce e leggera con UDP.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
