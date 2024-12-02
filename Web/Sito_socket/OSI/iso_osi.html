@@ -33,54 +33,144 @@
         </div>
     </nav>
 
-    <!-- Introduzione -->
-    <div class="container mt-5 bg-dark text-white rounded-3">
+    <div class="container mt-5 bg-dark text-white rounded-3 pb-5">
         <div class="text-center">
-            <h1 class="display-2 mb-3 text-primary ombra"><strong>MODELLO ISO-OSI</strong></h1>
-            <p class="lead">Scopri il modello ISO-OSI, la sua struttura e il funzionamento dei suoi livelli.</p>
+            <h1 class="display-3 mb-3 text-primary ombra"><strong>MODELLO ISO-OSI</strong></h1>
+            <p class="lead">In questa sezione scoprirai il modello OSI e i suoi livelli.</p>
         </div>
-
-        <div class="row mt-4 gap-4 py-5">
+        <div class="row mt-5">
             <div class="col-md-4">
-                <div class="card h-100 bg-black text-white rounded-3" data-bs-toggle="modal"
-                    data-bs-target="#osiModal"> <!-- Aggiunto rounded-3 -->
-                    <img src="../Immagini/modello_osi.webp" class="card-img-top" alt="Modello ISO-OSI">
+                <div class="card h-100 bg-black text-white" data-bs-toggle="modal" data-bs-target="#osiModal">
+                    <img src="../Immagini/modello_osi.webp" class="card-img-top" alt="Schema TCP">
                     <div class="card-body">
-                        <p class="card-text">Rappresentazione visiva dei 7 livelli del modello ISO-OSI.</p>
+                        <p class="card-text">Schema del Modello ISO-OSI e dei suoi 7 livelli.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 py-4">
+                <div class="col-12 col-lg-8">
+                    <div id="carouselExample" class="carousel slide h-100">
+                        <div class="carousel-inner px-5">
+                            <div class="carousel-item active" id="livello-fisico">
+                                <h4>Livello Fisico</h4>
+                                <p>
+                                    Il <strong>livello fisico</strong> è il primo livello della pila e si occupa della
+                                    trasmissione dei
+                                    dati grezzi attraverso mezzi di comunicazione, come cavi di rame, fibre ottiche o
+                                    onde radio. Oltre a questi fanno parte del primo livello le schede di rete, tutte le
+                                    tecnologie per permettono di <a href="glossario.html#Modulazione">modulare</a> o
+                                    demodulare il segnale ed eventuali gestione
+                                    delle collisioni nei canali bidirezionali.
+                                </p>
+                            </div>
+                            <div class="carousel-item" id="livello-collegamento-dati">
+                                <h4>Livello Collegamento Dati</h4>
+                                <p>
+                                    Il <strong>livello di collegamento</strong> dati si occupa di <a
+                                        href="glossario.html#Incapsulamento">incapsulare</a> il pacchetto proveniente
+                                    dallo strato superiore in un nuovo pacchetto contenente l’indirizzo <a
+                                        href="glossario.html#MAC">MAC</a> sorgente e
+                                    di destinazione, oltre a garantire la corretta ricezione dei pacchetti tramite il
+                                    <a href="glossario.html#CRC">CRC</a>. Questo livello permette l'invio del pacchetto
+                                    al corretto destinatario ma solo
+                                    all’interno di una <a href="glossario.html#LAN">LAN</a>.
+                                </p>
+                            </div>
+                            <div class="carousel-item" id="livello-di-rete">
+                                <h4>Livello di Rete</h4>
+                                <p>
+                                    Il <strong>livello di rete</strong> si occupa dell'instradamento dei pacchetti tra
+                                    reti diverse.
+                                    Questo permette di inviare pacchetti anche tra dispositivi di reti diverse, tutto
+                                    questo grazie ad un indirizzo IP che individua unicamente un dispositivo tra diverse
+                                    reti. Questo livello si occupa anche della scelta del percorso più breve nella per
+                                    raggiungere una rete esterna
+                                </p>
+                            </div>
+                            <div class="carousel-item" id="livello-di-trasporto">
+                                <h4>Livello di Trasporto</h4>
+                                <p>
+                                    Il <strong>livello di trasporto</strong> permette la comunicazione tra processi
+                                    distinti nello stesso dispositivo, grazie alle porte. Senza di queste non ci sarebbe
+                                    niente a distinguere un pacchetto destinato a un processo rispetto ad un altro.
+                                    Inoltre definisce due modalità di condivisione, TCP e UDP:
+                                    TCP (Transmission Control Protocol) è un protocollo che garantisce la ricezione
+                                    corretta ed ordinata dei pacchetti, tramite una sincronizzazione iniziale e finale
+                                    denominate rispettivamente three way handshake e four way handshake.
+                                    UDP (User Datagram Protocol) è un protocollo che non garantisce ne la ricezione, ne
+                                    l’ordine di ricezione. Questo protocollo è utilizzato nelle applicazioni dove è più
+                                    importante la velocità e non importa se qualche pacchetto viene perso.<br>
+
+                                    Le porte prima citate, hanno dimensione 16bit, quindi vanno da 0 a 65535 e sono
+                                    divise in:
+                                </p>
+                                <ul>
+                                    <li><strong>Well Known</strong> Ports: Le porte che vanno dalla 0 alla 1023, sono
+                                        riservate ad applicazioni particolari come HTTP o SSH</li>
+                                    <li><strong>Registered</strong> Ports: Le porte cha vanno da 1024 a 49151 sono le
+                                        cosiddette porte registrate, sono utilizzate da alcuni servizi ma possono anche
+                                        essere utilizzate dai client</li>
+                                    <li><strong>Private Ports</strong>: Le porte che vanno da 49152 a 65535, non hanno
+                                        un uso specifico e possono essere utilizzare liberamente da tutti i processi
+                                    </li>
+                                </ul>
+                                <p>
+                                    La coppia di indirizzo IP e porta è definita <a href="socket.html">Socket</a>.
+                                </p>
+                            </div>
+                            <div class="carousel-item" id="livello-di-sessione">
+                                <h4>Livello di Sessione</h4>
+                                <p>
+                                    Il <strong>livello di sessione</strong> fornisce servizi in grado di gestire le
+                                    sessioni di comunicazione tra processi, come l’apertura, la chiusura e la
+                                    sincronizzazione.
+                                </p>
+                            </div>
+                            <div class="carousel-item" id="livello-di-presentazione">
+                                <h4>Livello di Presentazione</h4>
+                                <p>
+                                    Il <strong>livello di presentazione</strong> si occupa di crittografia e rendere
+                                    visualizzabili i dati ricevuti per l’utente. Un esempio di servizio fornito da
+                                    questo livello sono tutti i formati di immagini
+                                </p>
+                            </div>
+                            <div class="carousel-item" id="livello-di-applicazione">
+                                <h4>Livello di Applicazione</h4>
+                                <p>
+                                    Il <strong>livello di applicazione</strong> fornisce l’interfaccia tra l’utente e i
+                                    dati ricevuti, tramite un programma.
+                                </p>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev w-auto" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon inverse-color-filter" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next w-auto end-0" type="button"
+                            data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon inverse-color-filter" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-7 py-4">
-                <h2><strong>Cos'è il modello ISO-OSI?</strong></h2>
-                <p>
-                    Il modello ISO-OSI è uno schema concettuale che suddivide il processo di comunicazione di rete
-                    in sette livelli distinti. Ogni livello ha funzioni specifiche e lavora con gli altri per garantire
-                    un trasferimento dati efficace.
-                </p>
-                <br>
-                <h2><strong>Cosa troverai in questa sezione?</strong></h2>
-                <ul>
-                    <li><strong>Livelli del modello:</strong> Una spiegazione dettagliata di ciascun livello.</li>
-                    <li><strong>Interazione tra livelli:</strong> Come i livelli collaborano per trasferire i dati.</li>
-                    <li><strong>Esempi pratici:</strong> Applicazioni reali del modello ISO-OSI.</li>
-                </ul>
-            </div>
         </div>
     </div>
 
-    <!--Modal immagine-->
+    <!-- Modal immagine -->
     <div class="modal fade" id="osiModal" tabindex="-1" aria-labelledby="osiModalLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-black text-white text-center rounded-3">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="osiModalLabel1">Schema del modello ISO-OSI</h5>
+                    <h5 class="modal-title" id="osiModalLabel1">Schema della comunicazione TCP</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="../Immagini/modello_osi.webp" alt="Schema ISO-OSI" class="img-fluid">
-                    <p class="py-3">Il modello ISO-OSI suddivide la comunicazione in 7 livelli: Fisico, Collegamento
-                        dati, Rete, Trasporto, Sessione, Presentazione e Applicazione.</p>
+                    <img src="../Immagini/tcp.webp" alt="Schema della comunicazione TCP" class="img-fluid">
+                    <p class="py-3">Questo schema illustra come TCP gestisce la trasmissione affidabile dei dati tra un
+                        client e un server, garantendo l'ordine e l'integrità delle informazioni trasmesse.</p>
                 </div>
             </div>
         </div>
