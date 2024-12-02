@@ -12,7 +12,7 @@
     <title>TCP vs UDP</title>
 </head>
 
-<body>
+<body class="bg-black">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -33,7 +33,7 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
+    <div class="container mt-5 bg-dark text-white rounded-3">
         <div class="text-center">
             <h1 class="display-3 mb-3 text-primary ombra"><strong>TCP vs UDP</strong></h1>
             <p class="lead">Confronto tra i due principali protocolli di trasporto nella rete.</p>
@@ -42,7 +42,7 @@
         <!-- Prima sezione: TCP -->
         <div class="row mt-5">
             <div class="col-md-4">
-                <div class="card h-100 bg-dark text-white" data-bs-toggle="modal" data-bs-target="#tcpModal">
+                <div class="card h-100 bg-black text-white" data-bs-toggle="modal" data-bs-target="#tcpModal">
                     <img src="../Immagini/tcp.webp" class="card-img-top" alt="Schema TCP">
                     <div class="card-body">
                         <p class="card-text">Schema della trasmissione affidabile con TCP.</p>
@@ -66,7 +66,7 @@
         </div>
 
         <!-- Seconda sezione: UDP -->
-        <div class="row mt-5">
+        <div class="row mt-5 py-3">
             <div class="col-md-6 py-4">
                 <h2><strong>UDP (User Datagram Protocol)</strong></h2>
                 <p>UDP è un protocollo senza connessione, progettato per essere rapido e leggero. È ideale per
@@ -81,7 +81,7 @@
                 </ul>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 bg-dark text-white" data-bs-toggle="modal" data-bs-target="#udpModal">
+                <div class="card h-100 bg-black text-white" data-bs-toggle="modal" data-bs-target="#udpModal">
                     <img src="../Immagini/udp.webp" class="card-img-top" alt="Schema UDP">
                     <div class="card-body">
                         <p class="card-text">Schema della trasmissione veloce e leggera con UDP.</p>
@@ -94,7 +94,7 @@
     <!-- Modal TCP -->
     <div class="modal fade" id="tcpModal" tabindex="-1" aria-labelledby="tcpModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
+            <div class="modal-content bg-black text-white">
                 <div class="modal-header">
                     <h5 class="modal-title" id="tcpModalLabel">Protoccolo TCP</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -125,7 +125,7 @@
     <!-- Modal UDP -->
     <div class="modal fade" id="udpModal" tabindex="-1" aria-labelledby="udpModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
+            <div class="modal-content bg-black text-white">
                 <div class="modal-header">
                     <h5 class="modal-title" id="udpModalLabel">Protocollo UDP</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

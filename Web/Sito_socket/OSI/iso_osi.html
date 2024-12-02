@@ -12,8 +12,7 @@
     <title>Modello ISO-OSI</title>
 </head>
 
-<body>
-
+<body class="bg-black">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -34,60 +33,62 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
+    <!-- Introduzione -->
+    <div class="container mt-5 bg-dark text-white rounded-3">
         <div class="text-center">
-            <h1 class="display-3 mb-3 text-primary ombra"><strong>Modello ISO-OSI</strong></h1>
-            <p class="lead">Scopri in questa sezione che cos'è il modello ISO-OSI, come funziona e le sue parti.</p>
+            <h1 class="display-2 mb-3 text-primary ombra"><strong>MODELLO ISO-OSI</strong></h1>
+            <p class="lead">Scopri il modello ISO-OSI, la sua struttura e il funzionamento dei suoi livelli.</p>
         </div>
-    </div>
 
-    <div class="container mt-4">
-        <h2><strong>Cos'è il modello ISO-OSI?</strong></h2>
-        <p>Il modello ISO-OSI è una struttura teorica standardizzata che suddivide il processo di comunicazione di rete
-            in sette livelli distinti. Ogni livello ha funzioni specifiche e dipende dal funzionamento degli altri
-            livelli per garantire un trasferimento efficace dei dati.</p>
-    </div>
-
-
-    <div class="container mt-5">
-
-        <div class="row mt-5">
+        <div class="row mt-4 gap-4 py-5">
             <div class="col-md-4">
-                <div class="card h-100 bg-dark text-white" data-bs-toggle="modal" data-bs-target="#osiModal1">
+                <div class="card h-100 bg-black text-white rounded-3" data-bs-toggle="modal"
+                    data-bs-target="#osiModal"> <!-- Aggiunto rounded-3 -->
                     <img src="../Immagini/modello_osi.webp" class="card-img-top" alt="Modello ISO-OSI">
                     <div class="card-body">
-                        <p class="card-text">Rappresentazione dei livelli dello standard ISO-OSI.<br>Leggiamo lo schema
-                            dal
-                            basso verso l'alto.</p>
+                        <p class="card-text">Rappresentazione visiva dei 7 livelli del modello ISO-OSI.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 py-4">
-                <!--fai il carousel qua-->
+
+            <div class="col-md-7 py-4">
+                <h2><strong>Cos'è il modello ISO-OSI?</strong></h2>
+                <p>
+                    Il modello ISO-OSI è uno schema concettuale che suddivide il processo di comunicazione di rete
+                    in sette livelli distinti. Ogni livello ha funzioni specifiche e lavora con gli altri per garantire
+                    un trasferimento dati efficace.
+                </p>
+                <br>
+                <h2><strong>Cosa troverai in questa sezione?</strong></h2>
+                <ul>
+                    <li><strong>Livelli del modello:</strong> Una spiegazione dettagliata di ciascun livello.</li>
+                    <li><strong>Interazione tra livelli:</strong> Come i livelli collaborano per trasferire i dati.</li>
+                    <li><strong>Esempi pratici:</strong> Applicazioni reali del modello ISO-OSI.</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="osiModal1" tabindex="-1" aria-labelledby="osiModalLabel1" aria-hidden="true">
+    <!--Modal immagine-->
+    <div class="modal fade" id="osiModal" tabindex="-1" aria-labelledby="osiModalLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
+            <div class="modal-content bg-black text-white text-center rounded-3">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="osiModalLabel1">I 7 livelli del modello ISO-OSI</h5>
+                    <h5 class="modal-title" id="osiModalLabel1">Schema del modello ISO-OSI</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="../Immagini/modello_osi.webp" class="img-fluid" alt="Modello ISO-OSI">
-                    <p>Il modello ISO-OSI rappresenta uno standard per comprendere come i dati viaggiano su una rete.
-                        Ogni livello svolge un ruolo fondamentale per garantire la comunicazione.</p>
+                    <img src="../Immagini/modello_osi.webp" alt="Schema ISO-OSI" class="img-fluid">
+                    <p class="py-3">Il modello ISO-OSI suddivide la comunicazione in 7 livelli: Fisico, Collegamento
+                        dati, Rete, Trasporto, Sessione, Presentazione e Applicazione.</p>
                 </div>
             </div>
         </div>
     </div>
 
-
     <!-- Footer -->
     <footer>
-        <div class="bg-dark py-5 mt-5 text-center">
+        <div class="bg-dark py-5 mt-5 text-center rounded-3">
             <p class="display-6 mb-3 text-white">Buttini Luca 5-E</p>
             <small class="text-white-50">&copy; 2024 SOCKET E RETI. All rights reserved.</small>
         </div>

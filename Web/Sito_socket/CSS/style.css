@@ -30,34 +30,22 @@ body {
 .modal-header .btn-close {
     filter: invert(1); 
 }
-
+ i
 .modal-header .btn-close:hover {
     filter: invert(0.8); 
 }
 
 
 .list-group-item {
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px;
+    transition: transform 0.3s ease;
+    perspective: 1000px; /* Aggiungi questa proprietà al contenitore */
 }
 
 .list-group-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: rotateY(10deg) scale(1.05);
     cursor: pointer;
 }
 
-.carousel-control-prev,
-.carousel-control-next {
-    width: 10%; /* Aumenta la larghezza del contenitore della freccia */
-}
 
-.carousel-control-prev {
-    left: -60px; /* Posiziona la freccia precedente più a sinistra */
-}
-
-.carousel-control-next {
-    right: -60px; /* Posiziona la freccia successiva più a destra */
-}
 
 

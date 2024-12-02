@@ -12,7 +12,7 @@
     <title>Home</title>
 </head>
 
-<body>
+<body class="bg-black">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -33,15 +33,16 @@
         </div>
     </nav>
     <!-- Introduzione -->
-    <div class="container mt-5">
+    <div class="container mt-5 bg-dark text-white rounded-3">
         <div class="text-center">
             <h1 class="display-2 mb-3 text-primary ombra"><strong>CONCETTI DI NETWORKING</strong></h1>
             <p class="lead">Introduzione al concetto di socket e altri concetti di rete.</p>
         </div>
-    
+
         <div class="row mt-4 gap-4 py-5">
             <div class="col-md-4">
-                <div class="card h-100 bg-dark text-white" data-bs-toggle="modal" data-bs-target="#socketModal">
+                <div class="card h-100 bg-black text-white rounded-3" data-bs-toggle="modal"
+                    data-bs-target="#socketModal"> <!-- Aggiunto rounded-3 -->
                     <img src="../Immagini/socket-ex.webp" class="card-img-top" alt="Esempio socket">
                     <div class="card-body">
                         <p class="card-text">Esempio di comunicazione client e server tramite una socket.</p>
@@ -70,14 +71,14 @@
     <!--Modal immagine-->
     <div class="modal fade" id="socketModal" tabindex="-1" aria-labelledby="socketModalLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content bg-dark text-white">
+            <div class="modal-content bg-black text-white text-center rounded-3">
                 <div class="modal-header">
                     <h5 class="modal-title" id="socketModalLabel1">Schema di una socket</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="../Immagini/socket-ex.webp" class="img-fluid" alt="Esempio socket">
-                    <p>Esempio di comunicazione client e server tramite una socket.</p>
+                    <img src="../Immagini/socket-ex.webp" alt="Esempio socket">
+                    <p class="py-3">Esempio di comunicazione client e server tramite una socket.</p>
                 </div>
             </div>
         </div>
@@ -85,7 +86,7 @@
 
     <!-- Footer -->
     <footer>
-        <div class="bg-dark py-5 mt-5 text-center">
+        <div class="bg-dark py-5 mt-5 text-center rounded-3"> <!-- Aggiunto rounded-3 -->
             <p class="display-6 mb-3 text-white">Buttini Luca 5-E</p>
             <small class="text-white-50">&copy; 2024 SOCKET E RETI. All rights reserved.</small>
         </div>
