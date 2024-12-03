@@ -11,6 +11,8 @@
 
 body {
     background-color: #fbfff4;
+    min-height: calc(100vh - 100px - 50px); /* Calcolo: altezza viewport - navbar - footer */
+    margin: 0 auto;
 }
 
 .ombra {
@@ -44,6 +46,18 @@ body {
 .list-group-item:hover {
     transform: rotateY(10deg) scale(1.05);
     cursor: pointer;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%; /* Regola la larghezza per non sovrapporsi al contenuto */
+    top: 50%; /* Centrare verticalmente */
+    transform: translateY(-50%);
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Colore di sfondo per maggiore visibilità */
+    border-radius: 50%; /* Forma circolare */
 }
 
 
