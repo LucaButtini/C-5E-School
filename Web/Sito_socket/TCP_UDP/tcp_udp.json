@@ -12,45 +12,130 @@
     ],
     "navbar": {
         "brand": "SOCKET E RETI",
-        "a": [
+        "links": [
             {
                 "text": "Home",
                 "href": "../Home/index.html"
             },
             {
                 "text": "Socket",
-                "href": "../Home/index.html"
+                "href": "../Socket/socket.html"
             },
             {
                 "text": "Modello OSI",
-                "href": "../Home/index.html"
+                "href": "../OSI/iso_osi.html"
             },
             {
                 "text": "TCP vs UDP",
-                "href": "../Home/index.html",
+                "href": "../TCP_UDP/tcp_udp.html",
                 "active": true
             },
             {
                 "text": "Glossario",
-                "href": "../Home/index.html"
+                "href": "../Glossario/glossario.html"
             }
         ]
     },
     "content": {
-        "argument": {
+        "header": {
             "title": "TCP vs UDP",
             "lead": "Confronto tra i due principali protocolli di trasporto nella rete."
         },
-        "card": {
-            "img": "../Immagini/tcp.webp",
-            "text": "Schema della trasmissione affidabile con TCP."
+        "tcpSection": {
+            "image": {
+                "src": "../Immagini/tcp.webp",
+                "alt": "Schema TCP"
+            },
+            "description": "Schema della trasmissione affidabile con TCP.",
+            "details": {
+                "title": "TCP (Transmission Control Protocol)",
+                "text": "TCP è un protocollo orientato alla connessione che garantisce una trasmissione affidabile dei dati. Ideale per applicazioni in cui è fondamentale che i dati arrivino in ordine e senza perdite.",
+                "features": [
+                    {
+                        "name": "Connessione affidabile",
+                        "description": "Stabilisce una connessione tra mittente e destinatario prima di inviare dati."
+                    },
+                    {
+                        "name": "Controllo di flusso",
+                        "description": "Regola la velocità di trasmissione per evitare congestioni."
+                    },
+                    {
+                        "name": "Rilevazione e correzione degli errori",
+                        "description": "I pacchetti persi vengono ritrasmessi."
+                    },
+                    {
+                        "name": "Utilizzo",
+                        "description": "Navigazione web, email, trasferimento file (HTTP, FTP, SMTP)."
+                    }
+                ]
+            }
         },
-        "col-right": {
-            "title": "TCP (Transmission Control Protocol)",
-            "text": "TCP è un protocollo orientato alla connessione che garantisce una trasmissione affidabile dei dati. Ideale per applicazioni in cui è fondamentale che i dati arrivino in ordine e senza perdite.",
-            "ul": {
-                ""
+        "udpSection": {
+            "details": {
+                "title": "UDP (User Datagram Protocol)",
+                "text": "UDP è un protocollo senza connessione, progettato per essere rapido e leggero. È ideale per applicazioni in cui la velocità è più importante dell'affidabilità.",
+                "features": [
+                    {
+                        "name": "Trasmissione senza connessione",
+                        "description": "I pacchetti vengono inviati senza instaurare una connessione."
+                    },
+                    {
+                        "name": "Bassa latenza",
+                        "description": "Nessun controllo di flusso o ritrasmissione, riducendo i tempi di trasmissione."
+                    },
+                    {
+                        "name": "Non affidabile",
+                        "description": "I pacchetti persi non vengono ritrasmessi."
+                    },
+                    {
+                        "name": "Utilizzo",
+                        "description": "Streaming video/audio, gaming online, DNS."
+                    }
+                ]
+            },
+            "image": {
+                "src": "../Immagini/udp.webp",
+                "alt": "Schema UDP"
+            },
+            "description": "Schema della trasmissione veloce e leggera con UDP."
+        },
+        "modals": {
+            "tcpModal": {
+                "id": "tcpModal",
+                "title": "Protocollo TCP",
+                "image": {
+                    "src": "../Immagini/tcp.webp",
+                    "alt": "Schema TCP"
+                },
+                "text": "Caratteristica fondamentale del TCP è il Three-Way Handshake, un processo in tre fasi per stabilire una connessione:",
+                "steps": [
+                    {
+                        "name": "SYN",
+                        "description": "Il client invia un segmento SYN al server per richiedere una connessione."
+                    },
+                    {
+                        "name": "SYN-ACK",
+                        "description": "Il server risponde con un segmento SYN-ACK, confermando la ricezione e richiedendo a sua volta una connessione."
+                    },
+                    {
+                        "name": "ACK",
+                        "description": "Il client invia un segmento ACK per confermare la connessione, completando il processo."
+                    }
+                ]
+            },
+            "udpModal": {
+                "id": "udpModal",
+                "title": "Protocollo UDP",
+                "image": {
+                    "src": "../Immagini/udp.webp",
+                    "alt": "Schema UDP"
+                },
+                "text": "Il protocollo UDP privilegia la velocità rispetto all'affidabilità."
             }
         }
+    },
+    "footer": {
+        "text": "Buttini Luca 5-E",
+        "copyright": "2024 SOCKET E RETI. All rights reserved."
     }
 }
