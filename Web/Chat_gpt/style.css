@@ -1,0 +1,36 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.test-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f8f9fa;
+    margin-top: 30px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.disabled-link {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+
+.timer {
+    font-size: 1.25rem;
+    color: red;
+}
