@@ -1,116 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test Online</title>
-    <!-- Bootstrap CSS -->
+    <title>Test - Homepage</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="styles.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"><strong>SOCKET E RETI</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link active" href="../Home/index.html">Avvia il test</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../Socket/socket.html">Scarica i risultati</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Inizio Test -->
-    <div id="introSection" class="container py-5 text-center">
-        <h1 class="mb-4">Benvenuto al Test</h1>
-        <p class="mb-3">Clicca sul pulsante qui sotto per iniziare il test.</p>
-        <button id="startButton" class="btn btn-success btn-lg">Inizia il Test</button>
+<body>
+    <div class="container text-center mt-5">
+        <h1>Benvenuto al Test!</h1>
+        <p>Fai clic qui per iniziare il test:</p>
+        <a href="domande.html" class="btn btn-primary">Inizia il Test</a>
     </div>
-
-    <!-- Domande Aperte -->
-    <div id="openQuestionsSection" class="container py-5 d-none">
-        <h2 class="text-center mb-4">Domande Aperte</h2>
-        <form id="openQuestionsForm">
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <label for="q1" class="form-label">Domanda 1:</label>
-                    <textarea id="q1" name="q1" class="form-control" rows="3" required></textarea>
-                </div>
-                <div class="col-md-6">
-                    <label for="q2" class="form-label">Domanda 2:</label>
-                    <textarea id="q2" name="q2" class="form-control" rows="3" required></textarea>
-                </div>
-                <div class="col-md-6">
-                    <label for="q3" class="form-label">Domanda 3:</label>
-                    <textarea id="q3" name="q3" class="form-control" rows="3" required></textarea>
-                </div>
-                <div class="col-md-6">
-                    <label for="q4" class="form-label">Domanda 4:</label>
-                    <textarea id="q4" name="q4" class="form-control" rows="3" required></textarea>
-                </div>
-            </div>
-                <button id="proceedButton" type="button" class="btn btn-primary w-100 mt-4">Procedi</button>
-        </form>
-    </div>
-
-    <!-- Domande Chiuse -->
-    <div id="closedQuestionsSection" class="container py-5 d-none">
-        <h2 class="text-center mb-4">Domande Chiuse</h2>
-        <form id="closedQuestionsForm">
-            <div class="row g-3">
-                <div class="col-md-6">
-                    <label for="q5" class="form-label">Domanda 5 (a scelta multipla):</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="q5a" name="q5" value="Opzione A" required>
-                        <label class="form-check-label" for="q5a">Opzione A</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="q5b" name="q5" value="Opzione B">
-                        <label class="form-check-label" for="q5b">Opzione B</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="q5c" name="q5" value="Opzione C">
-                        <label class="form-check-label" for="q5c">Opzione C</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <label for="q6" class="form-label">Domanda 6 (a scelta multipla):</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="q6a" name="q6" value="Opzione 1" required>
-                        <label class="form-check-label" for="q6a">Opzione 1</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="q6b" name="q6" value="Opzione 2">
-                        <label class="form-check-label" for="q6b">Opzione 2</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" id="q6c" name="q6" value="Opzione 3">
-                        <label class="form-check-label" for="q6c">Opzione 3</label>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary w-100 mt-4">Invia</button>
-        </form>
-    </div>
-
-    <footer>
-        <div class="bg-dark py-5 mt-5 text-center">
-            <p class="display-6 mb-3 text-white">Test Online GPT</p>
-            <small class="text-white-50">&copy; 2024 GPT-Generated Online Test. All rights reserved.</small>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
 </body>
 
 </html>
