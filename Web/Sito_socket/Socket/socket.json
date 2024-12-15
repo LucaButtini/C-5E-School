@@ -1,15 +1,4 @@
 {
-    "title": "Socket",
-    "meta": {
-        "charset": "UTF-8",
-        "viewport": "width=device-width, initial-scale=1.0",
-        "icon": "../Immagini/laptop.ico"
-    },
-    "stylesheets": [
-        "../CSS/style.css",
-        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css",
-        "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    ],
     "navbar": {
         "brand": "SOCKET E RETI",
         "links": [
@@ -25,97 +14,83 @@
             },
             {
                 "text": "Modello OSI",
-                "href": "../OSI/iso_osi.html"
+                "href": "../OSI/iso_osi.html",
+                "active": false
             },
             {
                 "text": "TCP vs UDP",
-                "href": "../TCP_UDP/tcp_udp.html"
+                "href": "../TCP_UDP/tcp_udp.html",
+                "active": false
             },
             {
                 "text": "Glossario",
-                "href": "../Glossario/glossario.html"
+                "href": "../Glossario/glossario.html",
+                "active": false
             }
         ]
     },
-    "content": {
-        "introduction": {
-            "title": "Socket",
-            "lead": "Le socket, le loro tipologie e come avviene la comunicazione tra server e client."
+    "pageTitle": "Socket",
+    "pageDescription": "Le socket, le loro tipologie e come avviene la comunicazione tra server e client.",
+    "socket": {
+        "intro": {
+            "title": "Cos'è una socket?",
+            "description": "Un socket, in informatica, indica un'astrazione software progettata per utilizzare delle API standard e condivise per la trasmissione e la ricezione di dati attraverso una rete oppure come meccanismo di IPC. È il punto in cui il codice applicativo di un processo accede al canale di comunicazione per mezzo di una porta, ottenendo una comunicazione tra processi che lavorano su due macchine fisicamente separate. Dal punto di vista di un programmatore un socket è un particolare oggetto sul quale leggere e scrivere i dati da trasmettere o ricevere."
         },
-        "sections": [
-            {
-                "type": "text",
-                "heading": "Cos'è una socket?",
-                "paragraph": "Un socket, in informatica, indica un'astrazione software progettata per utilizzare delle API standard e condivise per la trasmissione e la ricezione di dati attraverso una rete oppure come meccanismo di IPC. È il punto in cui il codice applicativo di un processo accede al canale di comunicazione per mezzo di una porta, ottenendo una comunicazione tra processi che lavorano su due macchine fisicamente separate."
-            },
-            {
-                "type": "card",
-                "img": "../Immagini/sock_tcp.webp",
-                "alt": "Esempio socket TCP",
-                "text": "Schema logico della comunicazione TCP mediante socket nel linguaggio C.",
-                "modal": {
-                    "id": "socketModal1",
-                    "title": "Schema della comunicazione TCP",
-                    "img": "../Immagini/sock_tcp.webp",
-                    "modalText": "Schema logico della comunicazione TCP mediante socket nel linguaggio C."
-                }
-            },
-            {
-                "type": "card",
-                "img": "../Immagini/sock_udp.webp",
-                "alt": "Esempio socket UDP",
-                "text": "Schema logico della comunicazione UDP mediante socket nel linguaggio C.",
-                "modal": {
-                    "id": "socketModal2",
-                    "title": "Schema della comunicazione UDP",
-                    "img": "../Immagini/sock_udp.webp",
-                    "modalText": "Schema logico della comunicazione UDP mediante socket nel linguaggio C."
-                }
-            },
-            {
-                "type": "list",
-                "heading": "Tipologie di socket",
-                "description": "Le socket si classificano principalmente in due categorie:",
-                "items": [
-                    {
-                        "title": "Stream Socket (TCP)",
-                        "description": "Utilizzate per comunicazioni stabili e affidabili, dove è garantito l'ordine e la consegna dei dati. Si basano sul protocollo TCP."
-                    },
-                    {
-                        "title": "Datagram Socket (UDP)",
-                        "description": "Ideali per comunicazioni rapide e leggere, senza la necessità di stabilire una connessione fissa. Si basano sul protocollo UDP."
-                    }
-                ]
-            },
-            {
-                "type": "process",
-                "heading": "Processo di comunicazione",
-                "description": "La comunicazione tramite socket coinvolge due ruoli principali:",
-                "roles": [
-                    {
-                        "title": "Server",
-                        "description": "Il dispositivo che si occupa di ricevere le richieste, stabilire connessioni e gestire lo scambio dei dati."
-                    },
-                    {
-                        "title": "Client",
-                        "description": "Il dispositivo che invia le richieste al server e si connette per ricevere o inviare informazioni."
-                    }
-                ],
-                "steps": [
-                    "Creazione della socket: Entrambi i dispositivi creano una socket come punto di accesso alla rete.",
-                    "Stabilire la connessione: Il client si collega alla socket del server per iniziare la comunicazione.",
-                    "Scambio dei dati: I messaggi o le informazioni vengono trasmessi tra client e server.",
-                    "Chiusura: Terminata la comunicazione, la connessione viene chiusa per liberare risorse."
-                ]
+        "tcpCard": {
+            "img": "../Immagini/sock_tcp.webp",
+            "text": "Schema logico della comunicazione TCP mediante socket nel linguaggio C.",
+            "modal": {
+                "title": "Schema della comunicazione TCP",
+                "description": "Schema logico della comunicazione TCP mediante socket nel linguaggio C.",
+                "img": "../Immagini/sock_tcp.webp"
             }
-        ]
+        },
+        "udpCard": {
+            "img": "../Immagini/sock_udp.webp",
+            "text": "Schema logico della comunicazione UDP mediante socket nel linguaggio C.",
+            "modal": {
+                "title": "Schema della comunicazione UDP",
+                "description": "Schema logico della comunicazione UDP mediante socket nel linguaggio C.",
+                "img": "../Immagini/sock_udp.webp"
+            }
+        },
+        "types": {
+            "title": "Tipologie di socket",
+            "description": "Le socket si classificano principalmente in due categorie:",
+            "categories": [
+                {
+                    "name": "Stream Socket (TCP)",
+                    "description": "Utilizzate per comunicazioni stabili e affidabili, dove è garantito l'ordine e la consegna dei dati. Si basano sul protocollo TCP."
+                },
+                {
+                    "name": "Datagram Socket (UDP)",
+                    "description": "Ideali per comunicazioni rapide e leggere, senza la necessità di stabilire una connessione fissa. Si basano sul protocollo UDP."
+                }
+            ]
+        },
+        "process": {
+            "title": "Processo di comunicazione",
+            "description": "La comunicazione tramite socket coinvolge due ruoli principali:",
+            "roles": [
+                {
+                    "name": "Server",
+                    "description": "Il dispositivo che si occupa di ricevere le richieste, stabilire connessioni e gestire lo scambio dei dati."
+                },
+                {
+                    "name": "Client",
+                    "description": "Il dispositivo che invia le richieste al server e si connette per ricevere o inviare informazioni."
+                }
+            ],
+            "steps": [
+                "Creazione della socket: Entrambi i dispositivi creano una socket come punto di accesso alla rete.",
+                "Stabilire la connessione: Il client si collega alla socket del server per iniziare la comunicazione.",
+                "Scambio dei dati: I messaggi o le informazioni vengono trasmessi tra client e server.",
+                "Chiusura: Terminata la comunicazione, la connessione viene chiusa per liberare risorse."
+            ]
+        }
     },
     "footer": {
-        "backgroundClass": "bg-dark",
         "text": "Buttini Luca 5-E",
-        "smallText": "© 2024 SOCKET E RETI. All rights reserved."
-    },
-    "scripts": [
-        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    ]
+        "smallText": "&copy; 2024 SOCKET E RETI. All rights reserved."
+    }
 }
