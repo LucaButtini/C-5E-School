@@ -22,10 +22,11 @@ fetch('./home.json')
         document.getElementById('socket-img').alt = data.socketCard.text;
         document.getElementById('socket-text').innerText = data.socketCard.text;
 
-        // Socket Modal
-        document.querySelector('.card').addEventListener('click', () => {
+        // Configura Modale con Evento "show.bs.modal"
+        const socketModal = document.querySelector('#socketModal1');
+        socketModal.addEventListener('show.bs.modal', () => {
             document.getElementById('tcpModalImg').src = data.socketCard.modal.img;
-            document.getElementById('tcpModalLabel').innerText = data.socketCard.modal.title;
+            document.getElementById('socketModalLabel').innerText = data.socketCard.modal.title;
             document.getElementById('tcpModalDescription').innerText = data.socketCard.modal.description;
         });
 

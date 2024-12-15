@@ -37,7 +37,8 @@
 
     <div class="row mt-4 gap-4 py-5">
         <div class="col-md-4">
-            <div class="card h-100 bg-black text-white rounded-3" data-bs-toggle="modal" data-bs-target="#socketModal">
+            <!-- Card con data-bs-toggle -->
+            <div class="card h-100 bg-black text-white rounded-3" data-bs-toggle="modal" data-bs-target="#socketModal1">
                 <img id="socket-img" class="card-img-top" alt="Esempio socket">
                 <div class="card-body">
                     <p class="card-text" id="socket-text"></p>
@@ -46,7 +47,7 @@
         </div>
 
         <div class="col-md-7 py-4">
-            <h2 id="socket-title"></h2>
+            <h2 id="socket-title"><strong>Cos'è una socket?</strong></h2>
             <p id="socket-description"></p>
             <br>
             <h2><strong>Cosa troverai nel sito?</strong></h2>
@@ -55,21 +56,21 @@
     </div>
 </div>
 
-<!-- Modal immagine -->
-<div class="modal fade" id="socketModal1" tabindex="-1" aria-labelledby="tcpModalLabel" aria-hidden="true">
+<div class="modal fade" id="socketModal1" tabindex="-1" aria-labelledby="socketModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content bg-black text-white">
             <div class="modal-header">
-                <h5 class="modal-title" id="tcpModalLabel"></h5>
+                <h5 class="modal-title" id="socketModalLabel"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <img src="" class="img-fluid" id="tcpModalImg" alt="Schema TCP">
+                <img src="" class="img-fluid" id="tcpModalImg" alt="Schema Socket">
                 <p id="tcpModalDescription"></p>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <!-- Footer -->
