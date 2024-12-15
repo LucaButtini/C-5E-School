@@ -2,7 +2,7 @@ fetch('./socket.json')
     .then((res) => res.json())
     .then((data) => {
         // Navbar Brand
-        document.getElementById('navbar-brand').innerText = data.navbar.brand;
+        document.querySelector('.navbar-brand').innerText = data.navbar.brand;
 
         // Navbar Links
         const navbarLinks = document.getElementById('navbar-links');
@@ -14,54 +14,57 @@ fetch('./socket.json')
         });
 
         // Page Title and Description
-        document.getElementById('page-title').innerText = data.pageTitle;
-        document.getElementById('page-description').innerText = data.pageDescription;
+        document.querySelector('.display-3').innerText = data.pageTitle;
+        document.querySelector('.lead').innerText = data.pageDescription;
 
         // Socket Intro
-        document.getElementById('intro-title').innerText = data.socket.intro.title;
-        document.getElementById('intro-description').innerText = data.socket.intro.description;
+        document.querySelector('h2').innerText = data.socketIntro.title;
+        document.querySelector('h2 + p').innerText = data.socketIntro.description;
 
         // TCP Card
-        document.getElementById('tcp-img').src = data.socket.tcpCard.img;
-        document.getElementById('tcp-text').innerText = data.socket.tcpCard.text;
+        document.querySelector('#tcp-img').src = data.tcpCard.img;
+        document.querySelector('#tcp-img').alt = data.tcpCard.text;
+        document.querySelector('#tcp-img + .card-body .card-text').innerHTML = data.tcpCard.text;
 
-        // TCP Modal
-        document.querySelector('#tcpModal').addEventListener('show.bs.modal', () => {
-            document.getElementById('tcpModalImg').src = data.socket.tcpCard.modal.img;
-            document.getElementById('tcpModalTitle').innerText = data.socket.tcpCard.modal.title;
-            document.getElementById('tcpModalDescription').innerText = data.socket.tcpCard.modal.description;
+        // Add Event Listener for TCP Modal
+        document.querySelector('#socketModal1').addEventListener('show.bs.modal', () => {
+            document.getElementById('tcpModalImg').src = data.tcpCard.modal.img;
+            document.getElementById('tcpModalLabel1').innerText = data.tcpCard.modal.title;
+            document.getElementById('tcpModalDescription1').innerText = data.tcpCard.modal.description;
         });
 
         // UDP Card
-        document.getElementById('udp-img').src = data.socket.udpCard.img;
-        document.getElementById('udp-text').innerText = data.socket.udpCard.text;
+        document.querySelector('#udp-img').src = data.udpCard.img;
+        document.querySelector('#udp-img').alt = data.udpCard.text;
+        document.querySelector('#udp-img + .card-body .card-text').innerHTML = data.udpCard.text;
 
-        // UDP Modal
-        document.querySelector('#udpModal').addEventListener('show.bs.modal', () => {
-            document.getElementById('udpModalImg').src = data.socket.udpCard.modal.img;
-            document.getElementById('udpModalTitle').innerText = data.socket.udpCard.modal.title;
-            document.getElementById('udpModalDescription').innerText = data.socket.udpCard.modal.description;
+        // Add Event Listener for UDP Modal
+        document.querySelector('#socketModal2').addEventListener('show.bs.modal', () => {
+            document.getElementById('udpModalImg').src = data.udpCard.modal.img;
+            document.getElementById('udpModalLabel2').innerText = data.udpCard.modal.title;
+            document.getElementById('udpModalDescription2').innerText = data.udpCard.modal.description;
         });
 
-        // Types of socket
-        document.getElementById('types-title').innerText = data.socket.types.title;
-        document.getElementById('types-description').innerText = data.socket.types.description;
-        const typesCategories = document.getElementById('types-categories');
-        data.socket.types.categories.forEach((category) => {
+        // Types of Socket
+        document.querySelector('.col-md-6 h2').innerText = data.types.title;
+        document.querySelector('.col-md-6 p').innerText = data.types.description;
+        const typesList = document.querySelector('.col-md-6 ul');
+        data.types.categories.forEach((category) => {
             const li = document.createElement('li');
             li.innerHTML = `<strong>${category.name}:</strong> ${category.description}`;
-            typesCategories.appendChild(li);
+            typesList.appendChild(li);
         });
 
-        // Process of communication
-        document.getElementById('process-title').innerText = data.socket.process.title;
-        document.getElementById('process-description').innerText = data.socket.process.description;
+        // Process of Communication
+        document.querySelector('.col-md-12 h2').innerText = data.process.title;
+        document.querySelector('.col-md-12 p').innerText = data.process.description;
 
-        const rolesList = document.getElementById('process-steps');
-        data.socket.process.steps.forEach((step) => {
+        const processSteps = document.querySelector('.col-md-12 ul');
+        processSteps.innerHTML = ''; // Clear existing list
+        data.process.steps.forEach((step) => {
             const li = document.createElement('li');
             li.innerText = step;
-            rolesList.appendChild(li);
+            processSteps.appendChild(li);
         });
 
         // Footer

@@ -9,7 +9,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="icon" type="image/x-icon" href="../Immagini/laptop.ico">
-    <title id="page-title"></title>
+    <title id="page-title">Socket</title>
 </head>
 
 <body class="bg-black">
@@ -30,20 +30,22 @@
 
     <!-- Main Content -->
     <div class="container mt-5 bg-dark text-white rounded-3">
+        <!-- Page Title and Description -->
         <div class="text-center">
             <h1 class="display-3 mb-3 text-primary ombra" id="page-title"></h1>
             <p class="lead" id="page-description"></p>
         </div>
 
-        <!-- Intro -->
+        <!-- Intro Section -->
         <div class="row mt-5">
             <div class="col-md-8 py-4">
                 <h2 id="intro-title"></h2>
                 <p id="intro-description"></p>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 bg-black text-white" data-bs-toggle="modal" data-bs-target="#tcpModal">
-                    <img id="tcp-img" class="card-img-top" alt="Esempio socket">
+                <div class="card h-100 bg-black text-white d-flex flex-column" data-bs-toggle="modal"
+                    data-bs-target="#socketModal1">
+                    <img id="tcp-img" class="card-img-top" alt="Esempio socket TCP">
                     <div class="card-body">
                         <p class="card-text" id="tcp-text"></p>
                     </div>
@@ -51,43 +53,44 @@
             </div>
         </div>
 
-        <!-- Types -->
+        <!-- Socket Types -->
         <div class="row mt-5">
             <div class="col-md-4">
-                <div class="card h-100 bg-black text-white" data-bs-toggle="modal" data-bs-target="#udpModal">
-                    <img id="udp-img" class="card-img-top" alt="Esempio socket">
+                <div class="card h-100 bg-black text-white d-flex flex-column" data-bs-toggle="modal"
+                    data-bs-target="#socketModal2">
+                    <img id="udp-img" class="card-img-top" alt="Esempio socket UDP">
                     <div class="card-body">
                         <p class="card-text" id="udp-text"></p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 py-4">
+            <div class="col-md-6 py-4">
                 <h2 id="types-title"></h2>
                 <p id="types-description"></p>
                 <ul id="types-categories"></ul>
             </div>
         </div>
 
-        <!-- Process -->
+        <!-- Process Section -->
         <div class="row mt-5">
             <div class="col-md-12">
                 <h2 id="process-title"></h2>
                 <p id="process-description"></p>
-                <ol id="process-steps"></ol>
+                <ul id="process-steps"></ul>
             </div>
         </div>
     </div>
 
     <!-- Modal TCP -->
-    <div class="modal fade" id="tcpModal" tabindex="-1" aria-labelledby="tcpModalLabel" aria-hidden="true">
+    <div class="modal fade" id="socketModal1" tabindex="-1" aria-labelledby="tcpModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content bg-black text-white">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="tcpModalTitle"></h5>
+                    <h5 class="modal-title" id="tcpModalLabel"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img id="tcpModalImg" class="img-fluid" alt="Schema TCP">
+                    <img src="" class="img-fluid" id="tcpModalImg" alt="Schema TCP">
                     <p id="tcpModalDescription"></p>
                 </div>
             </div>
@@ -95,15 +98,15 @@
     </div>
 
     <!-- Modal UDP -->
-    <div class="modal fade" id="udpModal" tabindex="-1" aria-labelledby="udpModalLabel" aria-hidden="true">
+    <div class="modal fade" id="socketModal2" tabindex="-1" aria-labelledby="udpModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content bg-black text-white">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="udpModalTitle"></h5>
+                    <h5 class="modal-title" id="udpModalLabel"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img id="udpModalImg" class="img-fluid" alt="Schema UDP">
+                    <img src="" class="img-fluid" id="udpModalImg" alt="Schema UDP">
                     <p id="udpModalDescription"></p>
                 </div>
             </div>
@@ -118,6 +121,9 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="socket.js"></script>
 </body>
 
