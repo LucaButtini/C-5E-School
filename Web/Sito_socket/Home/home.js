@@ -19,13 +19,14 @@ fetch('./home.json')
 
         // Socket Card
         document.getElementById('socket-img').src = data.socketCard.img;
+        document.getElementById('socket-img').alt = data.socketCard.text;
         document.getElementById('socket-text').innerText = data.socketCard.text;
 
         // Socket Modal
-        document.querySelector('#socketModal').addEventListener('show.bs.modal', () => {
-            document.getElementById('socketModalImg').src = data.socketCard.modal.img;
-            document.getElementById('socketModalLabel').innerText = data.socketCard.modal.title;
-            document.getElementById('socketModalDescription').innerText = data.socketCard.modal.description;
+        document.querySelector('.card').addEventListener('click', () => {
+            document.getElementById('tcpModalImg').src = data.socketCard.modal.img;
+            document.getElementById('tcpModalLabel').innerText = data.socketCard.modal.title;
+            document.getElementById('tcpModalDescription').innerText = data.socketCard.modal.description;
         });
 
         // Socket Intro
