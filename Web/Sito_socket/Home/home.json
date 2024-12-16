@@ -1,69 +1,106 @@
 {
-    "navbar": {
-        "brand": "SOCKET E RETI",
-        "links": [
-            {
-                "text": "Home",
-                "href": "../Home/index.html",
-                "active": true
-            },
-            {
-                "text": "Socket",
-                "href": "../Socket/socket.html",
-                "active": false
-            },
-            {
-                "text": "Modello OSI",
-                "href": "../OSI/iso_osi.html",
-                "active": false
-            },
-            {
-                "text": "TCP vs UDP",
-                "href": "../TCP_UDP/tcp_udp.html",
-                "active": false
-            },
-            {
-                "text": "Glossario",
-                "href": "../Glossario/glossario.html",
-                "active": false
+  "navbar": {
+    "brand": "SOCKET E RETI",
+    "links": [
+      {
+        "text": "Home",
+        "href": "../Home/index.html",
+        "active": true
+      },
+      {
+        "text": "Socket",
+        "href": "../Socket/socket.html",
+        "active": false
+      },
+      {
+        "text": "Modello OSI",
+        "href": "../OSI/iso_osi.html",
+        "active": false
+      },
+      {
+        "text": "TCP vs UDP",
+        "href": "../TCP_UDP/tcp_udp.html",
+        "active": false
+      },
+      {
+        "text": "Glossario",
+        "href": "../Glossario/glossario.html",
+        "active": false
+      }
+    ]
+  },
+  "mainContent": {
+    "containerClass": "container mt-5 bg-dark text-white rounded-3",
+    "title": {
+      "text": "CONCETTI DI NETWORKING",
+      "class": "display-2 mb-3 text-primary ombra",
+      "strong": true
+    },
+    "description": {
+      "text": "Introduzione al concetto di socket e altri concetti di rete.",
+      "class": "lead"
+    },
+    "sections": [
+      {
+        "type": "row",
+        "columns": [
+          {
+            "class": "col-md-4",
+            "card": {
+              "image": "../Immagini/socket-ex.webp",
+              "alt": "Esempio socket",
+              "text": "Esempio di comunicazione client e server tramite una socket."
             }
+          },
+          {
+            "class": "col-md-7 py-4",
+            "content": [
+              {
+                "type": "h2",
+                "text": "Cos'è una socket?",
+                "strong": true
+              },
+              {
+                "type": "p",
+                "text": "Una socket è un endpoint per la comunicazione tra due dispositivi in una rete. Utilizzando socket, i computer possono inviare e ricevere dati in modo affidabile."
+              },
+              {
+                "type": "h2",
+                "text": "Cosa troverai nel sito?",
+                "strong": true
+              },
+              {
+                "type": "ul",
+                "items": [
+                  "Socket: Come funzionano e le tipologie.",
+                  "Modello OSI: La pila ISO-OSI e i suoi livelli.",
+                  "TCP vs UDP: Confronto tra i due protocolli di trasporto.",
+                  "Glossario: Tutti i termini tecnici spiegati in dettaglio."
+                ]
+              }
+            ]
+          }
         ]
-    },
-    "pageTitle": "CONCETTI DI NETWORKING",
-    "pageDescription": "Introduzione al concetto di socket e altri concetti di rete.",
-    "socketCard": {
-        "img": "../Immagini/socket-ex.webp",
-        "text": "Esempio di comunicazione client e server tramite una socket.",
-        "modal": {
-            "title": "Schema di una socket",
-            "description": "Esempio di comunicazione client e server tramite una socket.",
-            "img": "../Immagini/socket-ex.webp"
-        }
-    },
-    "socketIntro": {
-        "title": "Cos'è una socket?",
-        "description": "Una socket è un endpoint per la comunicazione tra due dispositivi in una rete. Utilizzando socket, i computer possono inviare e ricevere dati in modo affidabile."
-    },
-    "siteFeatures": [
-        {
-            "title": "Socket",
-            "description": "Come funzionano e le tipologie."
-        },
-        {
-            "title": "Modello OSI",
-            "description": "La pila ISO-OSI e i suoi livelli."
-        },
-        {
-            "title": "TCP vs UDP",
-            "description": "Confronto tra i due protocolli di trasporto."
-        },
-        {
-            "title": "Glossario",
-            "description": "Tutti i termini tecnici spiegati in dettaglio."
-        }
-    ],
-    "footer": {
+      }
+    ]
+  },
+  "footer": {
+    "id": "foot-home",
+    "bgClass": "bg-dark py-5 mt-5 text-center rounded-3",
+    "content": [
+      {
+        "type": "p",
         "text": "Buttini Luca 5-E",
-        "smallText": "&copy; 2024 SOCKET E RETI. All rights reserved."
-    }
+        "class": "display-6 mb-3 text-white"
+      },
+      {
+        "type": "small",
+        "text": "&copy; 2024 SOCKET E RETI. All rights reserved.",
+        "class": "text-white-50"
+      }
+    ]
+  },
+  "scripts": [
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  ]
 }
