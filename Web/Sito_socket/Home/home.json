@@ -85,21 +85,9 @@
     ]
   },
   "footer": {
-    "id": "foot-home",
-    "bgClass": "bg-dark py-5 mt-5 text-center rounded-3",
-    "content": [
-      {
-        "type": "p",
-        "text": "Buttini Luca 5-E",
-        "class": "display-6 mb-3 text-white"
-      },
-      {
-        "type": "small",
-        "text": "&copy; 2024 SOCKET E RETI. All rights reserved.",
-        "class": "text-white-50"
-      }
-    ]
-  },
+    "text": "Buttini Luca 5-E",
+    "smallText": "&copy; 2024 SOCKET E RETI. All rights reserved."
+},
   "scripts": [
     "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   ]

@@ -60,14 +60,8 @@ fetch('./home.json')
             mainContent.appendChild(row);  // Aggiungi la riga alla sezione principale
         });
 
-        // Footer: Popola il contenuto del footer
-        const footer = document.getElementById('foot-home');  // Seleziona il footer
-        data.footer.content.forEach((item) => {
-            const element = document.createElement(item.type);  // Crea un nuovo elemento (p, small, etc.)
-            element.className = item.class;  // Aggiungi la classe
-            element.innerHTML = item.text;  // Imposta il testo dell'elemento
-            footer.appendChild(element);  // Aggiungi l'elemento al footer
-        });
+        document.getElementById('footer-text').innerText = data.footer.text;
+        document.getElementById('footer-small-text').innerHTML = data.footer.smallText;
 
         // Scripts: Aggiungi i file JavaScript esterni
         data.scripts.forEach((script) => {
