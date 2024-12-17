@@ -1,7 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     let totalSeconds = 600; // 10 minuti
     let timerInterval;
-    let timeTaken; // Per salvare il tempo finale
+
+    // Variabile per salvare le risposte
+    const userAnswers = {
+        open: {},
+        closed: {}
+    };
 
     // Timer
     function updateTimer() {
@@ -18,87 +23,57 @@ document.addEventListener('DOMContentLoaded', () => {
     // Completa il test
     function completeTest() {
         clearInterval(timerInterval);
-        timeTaken = 600 - totalSeconds - 1; // Tempo impiegato in secondi
-        const finalMinutes = Math.floor(timeTaken / 60);
-        const finalSeconds = timeTaken % 60;
 
-        // Nascondi tutte le sezioni delle domande e il timer
+        // Nascondi le sezioni
         document.getElementById('openQuestionsSection').classList.add('d-none');
         document.getElementById('closedQuestionsSection').classList.add('d-none');
         document.getElementById('timerSection').classList.add('d-none');
 
-        // Crea il messaggio finale
-        const finalMessage = `
+        // Mostra il messaggio finale
+        const mainContent = document.getElementById('mainContent');
+        mainContent.innerHTML = `
             <div class="container py-5 my-4 bg-white rounded shadow text-center">
                 <h1 class="mb-3 text-success">Hai completato il test!</h1>
-                <p class="fs-4 text-secondary">Tempo impiegato: <strong>${finalMinutes} minuti e ${finalSeconds} secondi</strong></p>
+                <p class="fs-4 text-secondary">Grazie per aver partecipato al test.</p>
             </div>
         `;
-
-        // Inserisce il messaggio al posto delle sezioni nascoste
-        const mainContent = document.getElementById('mainContent');
-        mainContent.innerHTML = finalMessage;
     }
 
-    // Raccolta risposte
-    function collectResults() {
-        const results = [];
+    // Salva risposte aperte
+    document.getElementById('openQuestionsForm').addEventListener('input', (event) => {
+        const { id, value } = event.target;
+        userAnswers.open[id] = value;
+    });
 
-        // Raccolta domande aperte
-        const openQuestionsSection = document.getElementById('openQuestionsSection');
-        if (openQuestionsSection) {
-            const openQuestions = openQuestionsSection.querySelectorAll('textarea');
-            openQuestions.forEach((textarea, index) => {
-                const answer = textarea.value.trim();
-                results.push(`Domanda ${index + 1}: ${answer || "Non risposto"}`);
-            });
-        }
+    // Salva risposte chiuse
+    document.getElementById('closedQuestionsForm').addEventListener('change', (event) => {
+        const { name, value } = event.target;
+        userAnswers.closed[name] = value;
+    });
 
-        // Raccolta domande chiuse
-        const closedQuestionsSection = document.getElementById('closedQuestionsSection');
-        if (closedQuestionsSection) {
-            const closedQuestions = closedQuestionsSection.querySelectorAll('input[type="radio"]');
-            const groupedQuestions = {};
+    // Funzione per scaricare le risposte
+    function downloadResults() {
+        const results = `
+        Risposte del Test:
+        
+        Domande Aperte:
+        1. ${userAnswers.open.q1 || 'Non risposto'}
+        2. ${userAnswers.open.q2 || 'Non risposto'}
+        3. ${userAnswers.open.q3 || 'Non risposto'}
+        
+        Domande Chiuse:
+        4. ${userAnswers.closed.q4 || 'Non risposto'}
+        5. ${userAnswers.closed.q5 || 'Non risposto'}
+        `;
 
-            // Raggruppa per "name" le risposte selezionate
-            closedQuestions.forEach((input) => {
-                if (input.checked) {
-                    groupedQuestions[input.name] = input.value;
-                } else if (!groupedQuestions[input.name]) {
-                    groupedQuestions[input.name] = "Non risposto";
-                }
-            });
-
-            // Salva le risposte raccolte
-            Object.keys(groupedQuestions).forEach((name, index) => {
-                results.push(`Domanda ${index + 4}: ${groupedQuestions[name]}`);
-            });
-        }
-
-        return results;
-    }
-
-    // Salva i risultati su file
-    function saveResults() {
-        const results = collectResults();
-        console.log("Risultati raccolti:", results); // Debug in console
-
-        if (results.length === 0) {
-            alert("Non ci sono risposte da salvare!");
-            return;
-        }
-
-        // Genera il file .txt
-        const blob = new Blob([results.join('\n')], { type: 'text/plain' });
+        const blob = new Blob([results], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
-
-        // Crea e simula il click sul link per scaricare
         const a = document.createElement('a');
         a.href = url;
-        a.download = `test_results_${new Date().toISOString().replace(/[:]/g, '-')}.txt`;
+        a.download = 'risposte_test.txt';
+        document.body.appendChild(a);
         a.click();
-
-        // Rilascia l'URL per evitare memory leak
+        document.body.removeChild(a);
         URL.revokeObjectURL(url);
     }
 
@@ -120,5 +95,10 @@ document.addEventListener('DOMContentLoaded', () => {
         completeTest();
     });
 
-    document.getElementById('downloadButton').addEventListener('click', saveResults);
+    // Event listener dinamico per il pulsante di download
+    document.addEventListener('click', (event) => {
+        if (event.target && event.target.id === 'downloadButton') {
+            downloadResults();
+        }
+    });
 });
