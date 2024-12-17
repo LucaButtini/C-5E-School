@@ -32,9 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Mostra il messaggio finale
         const mainContent = document.getElementById('mainContent');
         mainContent.innerHTML = `
-            <div class="container py-5 my-4 bg-white rounded shadow text-center">
+            <div class="container py-5 my-4 bg-dark rounded shadow text-center text-white">
+                 <img src="quiz.webp" class="img-fluid w-50 border rounded-4 shadow mb-4" alt="Quiz">
                 <h1 class="mb-3 text-success">Hai completato il test!</h1>
-                <p class="fs-4 text-secondary">Grazie per aver partecipato al test.</p>
+                <p class="lead">Grazie per aver partecipato al test.</p>
             </div>
         `;
     }
