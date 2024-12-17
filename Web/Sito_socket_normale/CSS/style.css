@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    transition: 0.8s;
+}
+
+body {
+    background-color: #fbfff4;
+    min-height: calc(100vh - 100px - 50px); /* Calcolo: altezza viewport - navbar - footer */
+    margin: 0 auto;
+}
+
+.ombra {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/*.list-group-item {
+    transition: transform 0.8s ease; 
+}
+
+.list-group-item:hover {
+    transform: scale(1.1); 
+   z-index: 1;
+}*/
+
+.modal-header .btn-close {
+    filter: invert(1); 
+}
+ i
+.modal-header .btn-close:hover {
+    filter: invert(0.8); 
+}
+
+
+.list-group-item {
+    transition: transform 0.3s ease;
+    perspective: 1000px; /* Aggiungi questa proprietà al contenitore */
+}
+
+.list-group-item:hover {
+    transform: rotateY(10deg) scale(1.05);
+    cursor: pointer;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%; /* Regola la larghezza per non sovrapporsi al contenuto */
+    top: 50%; /* Centrare verticalmente */
+    transform: translateY(-50%);
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Colore di sfondo per maggiore visibilità */
+    border-radius: 50%; /* Forma circolare */
+}
+
+
+
+
+
+

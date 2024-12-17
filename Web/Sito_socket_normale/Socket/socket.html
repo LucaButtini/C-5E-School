@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/x-icon" href="../Immagini/laptop.ico">
+    <title>Socket</title>
+</head>
+
+<body class="bg-black">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><strong>SOCKET E RETI</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="../Home/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../Socket/socket.html">Socket</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../OSI/iso_osi.html">Modello OSI</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../TCP_UDP/tcp_udp.html">TCP vs UDP</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../Glossario/glossario.html">Glossario</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 bg-dark text-white rounded-3">
+        <div class="text-center">
+            <h1 class="display-3 mb-3 text-primary ombra"><strong>Socket</strong></h1>
+            <p class="lead">Le socket, le loro tipologie e come avviene la comunicazione tra server e client.</p>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-8 py-4">
+                <h2><strong>Cos'è una socket?</strong></h2>
+                <p>Un socket, in informatica, indica un'astrazione software progettata per utilizzare delle API standard
+                    e condivise per la trasmissione e la ricezione di dati attraverso una rete oppure come meccanismo di
+                    IPC. È il punto in cui il codice applicativo di un processo accede al canale di comunicazione per
+                    mezzo di una porta, ottenendo una comunicazione tra processi che lavorano su due macchine
+                    fisicamente separate. Dal punto di vista di un programmatore un socket è un particolare oggetto sul
+                    quale leggere e scrivere i dati da trasmettere o ricevere.</p>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 bg-black text-white d-flex flex-column" data-bs-toggle="modal" data-bs-target="#socketModal1">
+                    <img src="../Immagini/sock_tcp.webp" class="card-img-top" alt="Esempio socket">
+                    <div class="card-body">
+                        <p class="card-text">Schema logico della comunicazione <strong>TCP</strong> mediante socket nel
+                            <strong>linguaggio C.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card h-100 bg-black text-white d-flex flex-column" data-bs-toggle="modal" data-bs-target="#socketModal2">
+                    <img src="../Immagini/sock_udp.webp" class="card-img-top" alt="Esempio socket">
+                    <div class="card-body">
+                        <p class="card-text">Schema logico della comunicazione <strong>UDP</strong> mediante socket nel
+                            <strong>linguaggio C.</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 py-4">
+                <h2><strong>Tipologie di socket</strong></h2>
+                <p>Le socket si classificano principalmente in due categorie:</p>
+                <ul>
+                    <li><strong>Stream Socket (TCP):</strong> Utilizzate per comunicazioni stabili e affidabili, dove è
+                        garantito l'ordine e la consegna dei dati. Si basano sul protocollo TCP.</li>
+                    <li><strong>Datagram Socket (UDP):</strong> Ideali per comunicazioni rapide e leggere, senza la
+                        necessità di stabilire una connessione fissa. Si basano sul protocollo UDP.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h2><strong></strong>Processo di comunicazione</h2>
+                <p>La comunicazione tramite socket coinvolge due ruoli principali:</p>
+                <ol>
+                    <li><strong>Server:</strong> Il dispositivo che si occupa di ricevere le richieste, stabilire
+                        connessioni e gestire lo scambio dei dati.</li>
+                    <li><strong>Client:</strong> Il dispositivo che invia le richieste al server e si connette per
+                        ricevere o inviare informazioni.</li>
+                </ol>
+                <p>Il processo può essere descritto in quattro fasi fondamentali:</p>
+                <ul>
+                    <li><strong>Creazione della socket:</strong> Entrambi i dispositivi creano una socket come punto di
+                        accesso alla rete.</li>
+                    <li><strong>Stabilire la connessione:</strong> Il client si collega alla socket del server per
+                        iniziare la comunicazione.</li>
+                    <li><strong>Scambio dei dati:</strong> I messaggi o le informazioni vengono trasmessi tra client e
+                        server.</li>
+                    <li><strong>Chiusura:</strong> Terminata la comunicazione, la connessione viene chiusa per liberare
+                        risorse.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Modal 1 per immagine TCP -->
+    <div class="modal fade" id="socketModal1" tabindex="-1" aria-labelledby="socketModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-black text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="socketModalLabel1">Schema della comunicazione TCP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="../Immagini/sock_tcp.webp" class="img-fluid" alt="Esempio socket">
+                    <p>Schema logico della comunicazione TCP mediante socket nel linguaggio C.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal 2 per immagine UDP -->
+    <div class="modal fade" id="socketModal2" tabindex="-1" aria-labelledby="socketModalLabel2" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-black text-white">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="socketModalLabel2">Schema della comunicazione UDP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="../Immagini/sock_udp.webp" class="img-fluid" alt="Esempio socket">
+                    <p>Schema logico della comunicazione UDP mediante socket nel linguaggio C.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="bg-dark py-5 mt-5 text-center">
+            <p class="display-6 mb-3 text-white">Buttini Luca 5-E</p>
+            <small class="text-white-50">&copy; 2024 SOCKET E RETI. All rights reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
