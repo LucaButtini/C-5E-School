@@ -22,16 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Completa il test
     // Completa il test
-function completeTest() {
-    clearInterval(timerInterval);
+    function completeTest() {
+        clearInterval(timerInterval);
 
-    // Nascondi le sezioni
-    document.getElementById('openQuestionsSection').classList.add('d-none');
-    document.getElementById('closedQuestionsSection').classList.add('d-none');
-    document.getElementById('timerSection').classList.add('d-none');
+        // Nascondi le sezioni
+        document.getElementById('openQuestionsSection').classList.add('d-none');
+        document.getElementById('closedQuestionsSection').classList.add('d-none');
+        document.getElementById('timerSection').classList.add('d-none');
 
-    // Genera il contenuto finale come stringa di testo
-    const finalContent = `
+        // Genera il contenuto finale come stringa di testo
+        const finalContent = `
         <div class="container py-5 my-4 bg-dark rounded shadow text-center text-white">
             <img src="quiz.webp" class="img-fluid w-50 border rounded-4 shadow mb-4" alt="Quiz">
             <h1 class="mb-3 text-success">Hai completato il test!</h1>
@@ -40,12 +40,12 @@ function completeTest() {
         </div>
     `;
 
-    // Sostituisce il contenuto principale con il nuovo contenuto generato
-    document.getElementById('mainContent').innerHTML = finalContent;
+        // Sostituisce il contenuto principale con il nuovo contenuto generato
+        document.getElementById('mainContent').innerHTML = finalContent;
 
-    // Restituisce il testo HTML come stringa
-    return finalContent;
-}
+        // Restituisce il testo HTML come stringa
+        return finalContent;
+    }
 
 
     // Salva risposte aperte
@@ -76,7 +76,7 @@ function completeTest() {
     5. ${userAnswers.closed.q5 || 'Non risposto'}
     6. ${userAnswers.closed.q7 || 'Non risposto'}
         `;
-    
+
         const blob = new Blob([results], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -87,7 +87,7 @@ function completeTest() {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
     }
-    
+
 
     // Eventi
     document.getElementById('startButton').addEventListener('click', () => {
@@ -113,21 +113,21 @@ function completeTest() {
             totalSeconds = 600;  // 10 minuti
             userAnswers.open = {};
             userAnswers.closed = {};
-    
+
             // Ripristina il timer e le domande
             document.getElementById('mainContent').innerHTML = document.getElementById('introSection').outerHTML;
-    
+
             // Nascondi e mostra le sezioni
             document.getElementById('openQuestionsSection').classList.add('d-none');
             document.getElementById('closedQuestionsSection').classList.add('d-none');
             document.getElementById('timerSection').classList.add('d-none');
             document.getElementById('introSection').classList.remove('d-none');
-    
+
             // Resetta il timer
             document.getElementById('time').textContent = '10:00';
         }
     });
-    
+
     // Event listener per il pulsante "Scarica Risultati"
     document.addEventListener('click', (event) => {
         if (event.target && event.target.id === 'downloadButton') {
