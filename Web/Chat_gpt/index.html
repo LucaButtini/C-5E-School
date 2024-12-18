@@ -8,6 +8,15 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="q-mark.ico">
+    <style>
+        .modal-header .btn-close {
+            filter: invert(1);
+        }
+
+        .modal-header .btn-close:hover {
+            filter: invert(0.8);
+        }
+    </style>
 </head>
 
 <body class="bg-black">
@@ -18,7 +27,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" id="downloadResults" href="#" data-bs-toggle="modal" data-bs-target="#resultsModal">Scarica i Risultati</a>
+                        <a class="nav-link" id="downloadResults" href="#" data-bs-toggle="modal"
+                            data-bs-target="#resultsModal">Scarica i Risultati</a>
                     </li>
                 </ul>
             </div>
@@ -37,7 +47,7 @@
         <!-- Introduzione -->
         <div id="introSection" class="container py-5 my-4 bg-dark rounded shadow text-center text-white">
             <img src="quiz.webp" class="img-fluid w-50 border rounded-4 shadow mb-4" alt="Quiz">
-            <h1 class="mb-4">Benvenuto al Test</h1>
+            <h1 class="mb-4">Benvenuto al Test Online GPT</h1>
             <p class="mb-3">Clicca sul pulsante qui sotto per iniziare il test.</p>
             <button id="startButton" class="btn btn-success btn-lg">Inizia il Test</button>
         </div>
@@ -47,7 +57,8 @@
             <h2 class="text-center mb-4">Domande Aperte</h2>
             <form id="openQuestionsForm">
                 <div class="mb-4">
-                    <label for="q1" class="form-label fw-bold">1. Descrivi brevemente il funzionamento di un protocollo di rete.</label>
+                    <label for="q1" class="form-label fw-bold">1. Descrivi brevemente il funzionamento di un protocollo
+                        di rete.</label>
                     <textarea id="q1" name="q1" class="form-control" rows="3" required></textarea>
                 </div>
                 <div class="mb-4">

@@ -55,16 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Funzione per scaricare le risposte
     function downloadResults() {
         const results = `
-        Risposte del Test:
+    Risposte del Test:
         
-        Domande Aperte:
-        1. ${userAnswers.open.q1 || 'Non risposto'}
-        2. ${userAnswers.open.q2 || 'Non risposto'}
-        3. ${userAnswers.open.q3 || 'Non risposto'}
+    Domande Aperte:
+    1. ${userAnswers.open.q1 || 'Non risposto'}
+    2. ${userAnswers.open.q2 || 'Non risposto'}
+    3. ${userAnswers.open.q3 || 'Non risposto'}
         
-        Domande Chiuse:
-        4. ${userAnswers.closed.q4 || 'Non risposto'}
-        5. ${userAnswers.closed.q5 || 'Non risposto'}
+    Domande Chiuse:
+    4. ${userAnswers.closed.q4 || 'Non risposto'}
+    5. ${userAnswers.closed.q5 || 'Non risposto'}
         `;
 
         const blob = new Blob([results], { type: 'text/plain' });
