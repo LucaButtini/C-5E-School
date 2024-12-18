@@ -1,0 +1,114 @@
+{
+    "title": "Glossario",
+    "meta": {
+        "icon": "../Immagini/q-mark.ico"
+    },
+    "navbar": {
+        "brand": "SOCKET E RETI",
+        "links": [
+            {
+                "text": "Home",
+                "href": "../Home/index.html",
+                "active": false
+            },
+            {
+                "text": "Socket",
+                "href": "../Socket/socket.html",
+                "active": false
+            },
+            {
+                "text": "Modello OSI",
+                "href": "../OSI/iso_osi.html",
+                "active": false
+            },
+            {
+                "text": "TCP vs UDP",
+                "href": "../TCP_UDP/tcp_udp.html",
+                "active": false
+            },
+            {
+                "text": "Glossario",
+                "href": "../Glossario/glossario.html",
+                "active": true
+            }
+        ]
+    },
+    "content": {
+        "introduction": {
+            "title": "Glossario",
+            "lead": "In questa sezione trovi il glossario contenente tutti i termini tecnici utilizzati nel sito."
+        },
+        "sections": [
+            {
+                "type": "list",
+                "heading": "Termini",
+                "items": [
+                    {
+                        "title": "Socket",
+                        "description": "Interfaccia per la comunicazione di dati tra processi attraverso una rete. <a href='../Socket/socket.html' class='text-primary'>Leggi di più</a>."
+                    },
+                    {
+                        "title": "Client",
+                        "description": "Un'entità che richiede servizi o risorse da un server attraverso la rete."
+                    },
+                    {
+                        "title": "Server",
+                        "description": "Un'entità che fornisce servizi o risorse ai client."
+                    },
+                    {
+                        "title": "TCP",
+                        "description": "Protocollo orientato alla connessione che garantisce la consegna affidabile dei dati. <a href='../TCP_UDP/tcp_udp.html' class='text-primary'>Leggi di più</a>."
+                    },
+                    {
+                        "title": "UDP",
+                        "description": "Protocollo senza connessione che offre trasmissione veloce ma meno affidabile. <a href='../TCP_UDP/tcp_udp.html' class='text-primary'>Leggi di più</a>."
+                    },
+                    {
+                        "title": "Modello OSI",
+                        "description": "Framework concettuale per la comunicazione in rete suddiviso in sette livelli. <a href='../OSI/iso_osi.html' class='text-primary'>Leggi di più</a>."
+                    },
+                    {
+                        "title": "Connessione affidabile",
+                        "description": "Tipo di comunicazione che garantisce che i dati inviati vengano ricevuti correttamente e nell'ordine giusto."
+                    },
+                    {
+                        "title": "Three-Way Handshake",
+                        "description": "Processo in tre fasi (SYN, SYN-ACK, ACK) per stabilire una connessione TCP. <a href='../TCP_UDP/tcp_udp.html' class='text-primary'>Leggi di più</a>."
+                    },
+                    {
+                        "title": "SYN",
+                        "description": "Segmento iniziale inviato da un client per richiedere una connessione TCP."
+                    },
+                    {
+                        "title": "SYN-ACK",
+                        "description": "Segmento inviato dal server per confermare la ricezione del SYN e richiedere una connessione TCP."
+                    },
+                    {
+                        "title": "ACK",
+                        "description": "Segmento finale inviato dal client per completare il Three-Way Handshake."
+                    },
+                    {
+                        "title": "Controllo di flusso",
+                        "description": "Meccanismo che regola la velocità di trasmissione per evitare congestioni nella rete."
+                    },
+                    {
+                        "title": "Rilevazione degli errori",
+                        "description": "Tecnica utilizzata per identificare e gestire errori nei dati trasmessi."
+                    },
+                    {
+                        "title": "DNS (Domain Name System)",
+                        "description": "Sistema utilizzato per tradurre nomi di dominio (es. www.example.com) in indirizzi IP."
+                    },
+                    {
+                        "title": "Streaming",
+                        "description": "Trasmissione continua di dati multimediali (video o audio) tramite rete, spesso usando UDP per ridurre la latenza."
+                    }
+                ]
+            }
+        ]
+    },
+    "footer": {
+        "text": "Buttini Luca 5-E",
+        "smallText": "&copy; 2024 SOCKET E RETI. All rights reserved."
+    }
+}
