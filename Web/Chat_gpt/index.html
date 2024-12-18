@@ -16,6 +16,19 @@
         .modal-header .btn-close:hover {
             filter: invert(0.8);
         }
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+        }
+
+        #mainContent {
+            min-height: calc(100vh - 160px);
+            /* calcola l'altezza disponibile sottraendo l'altezza della navbar e del footer */
+            padding-bottom: 80px;
+            /* per evitare che il contenuto si sovrapponga al footer */
+        }
     </style>
 </head>
 
@@ -190,7 +203,7 @@
     </div>
 
     <footer>
-        <div class="bg-dark py-5 mt-5 text-center">
+        <div class="bg-dark py-5 mt-5 text-center mt-auto">
             <p class="display-6 mb-3 text-white">Test Online GPT</p>
             <small class="text-white-50">&copy; 2024 GPT-Generated Online Test. All rights reserved.</small>
         </div>
