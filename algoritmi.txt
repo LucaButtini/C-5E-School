@@ -1,0 +1,17 @@
+Per confrontare i due algoritmi bisogna confrontarne le prestazioni.
+
+Il bubble sort ha prestazioni efficienti dato che confronta tutti gli elementi di un vettore a due a due per poi riordinarlo. Per vettori già ordinati è molto efficiente. Questo pesa n^2.
+
+
+
+Il merge sort dice che ordinare elementi già ordinati fra loro è veloce.
+Parto con un array disordinato, lo spezziamo e lanciamo l'algoritmo su quelli rimasti, e poi otterremo tanti array di uno.
+Questo pesa ? Log in base 2 di n.
+Questa cosa pesa "nLogn". Questo occupa molta memoria, dato che è ricorsivo.
+
+Bisogna decidere quindi che tipo di algoritmo di ordinamento usare.
+
+------------------------------------------------------------------------------------------------------------------------------
+
+>>>>>>Per le vacanze:
+fare selection, bubble e quick/merge sort su un linguaggio a scelta.
